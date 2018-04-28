@@ -5,7 +5,7 @@ using UnityEngine;
 public class RTSCamera : MonoBehaviour {
 
     public float panSpeed = 20f;
-    public float scrollSpeed = 2f;
+    public float scrollSpeed = .5f;
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +51,6 @@ public class RTSCamera : MonoBehaviour {
             pos -= newPos;
         }            
 
-        if (transform.position != pos)
-            transform.position = pos;
+        transform.position = pos;
     }
 }

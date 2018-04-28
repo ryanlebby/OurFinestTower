@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour {
 
-    public float range;
+    public float BaseRange { get; set; }
     public List<Unit> UnitsInRange { get; set; }
 
     public void Start()
     {
         UnitsInRange = new List<Unit>();
         var collider = this.GetComponent<SphereCollider>();
-        collider.radius = range / 2f;
+        collider.radius = BaseRange / 2f;
     }
 
     public void OnTriggerEnter(Collider other)

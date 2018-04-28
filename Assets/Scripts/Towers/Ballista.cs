@@ -21,7 +21,7 @@ public class Ballista : Tower
     // Use this for initialization
     new void Start()
     {
-        range = Range;
+        BaseRange = Range;
         base.Start();
         anim = this.GetComponent<Animator>();
     }
@@ -35,7 +35,7 @@ public class Ballista : Tower
             LoadProjectile();
         }
 
-        if (target != null)
+        if (target != null && target.gameObject.activeSelf)
         {
             transform.LookAt(target.transform);
             if (LoadedProjectile != null)
@@ -44,10 +44,11 @@ public class Ballista : Tower
 
         if (RemainingCooldown <= 0)
         {
-            if (target == null || Vector3.Distance(transform.position, target.transform.position) >= Range)
+            /// MIGHT BE THE SLOWDOWN ISSUE!!!! CALLING EVERY FRAME?
+            if (target == null || !target.gameObject.activeSelf || Vector3.Distance(transform.position, target.transform.position) >= Range)
                 SearchForTarget();
 
-            if (target != null)
+            if (target != null && target.gameObject.activeSelf)
             {
                 Fire();
                 RemainingCooldown = TimeBetweenAttacks;

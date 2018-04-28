@@ -27,7 +27,7 @@ public class Arrow : Projectile
 	void Update () {
         if (selfDestructMode)
         {
-            if (Target == null)
+            if (Target == null || !Target.gameObject.activeSelf)
             {
                 Destroy(this.gameObject);
             }
@@ -39,7 +39,7 @@ public class Arrow : Projectile
 
         else if (IsFired)
         {
-            if (Vector3.Distance(transform.position, Tower.transform.position) > Range || Target == null)
+            if (Vector3.Distance(transform.position, Tower.transform.position) > Range || !Target.gameObject.activeSelf)
             {
                 Destroy(this.gameObject);
             }
@@ -63,7 +63,7 @@ public class Arrow : Projectile
             Target.TakeDamage(AttackDamage);
             selfDestructMode = true;
 
-            if (Target != null)
+            if (Target.gameObject.activeSelf)
             {
                 this.transform.parent = Target.transform;
             }

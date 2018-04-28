@@ -19,9 +19,9 @@ TagManager:
   - 
   - 
   - CameraRaycasts
-  - 
-  - 
-  - 
+  - Projectile
+  - Tower
+  - Terrain
   - 
   - 
   - 

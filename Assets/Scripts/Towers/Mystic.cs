@@ -18,7 +18,7 @@ public class Mystic : Tower
     // Use this for initialization
     public new void Start()
     {
-        range = Range;
+        BaseRange = Range;
         base.Start();        
     }
 

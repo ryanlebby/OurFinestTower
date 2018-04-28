@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4226181555365526}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tower_Ballista
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -1309,8 +1309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23487fb7931a8ae4c8759f9869c861f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
-  TowerAttackPower: 2
+  TowerAttackPower: 8
   Range: 12
   TimeBetweenAttacks: 1.5
   projectilePrefab: {fileID: 1001540677827668, guid: c3130f880f64cb242bfa3f37e7ef523e,

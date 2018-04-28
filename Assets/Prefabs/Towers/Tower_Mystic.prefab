@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4546913436842272}
   - component: {fileID: 114709500136098546}
   - component: {fileID: 135461097419285524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tower_Mystic
   m_TagString: Tower
   m_Icon: {fileID: 0}

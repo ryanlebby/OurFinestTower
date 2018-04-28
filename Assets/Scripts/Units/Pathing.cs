@@ -12,12 +12,13 @@ public class Pathing : MonoBehaviour {
 
     void Start()
     {
-        Reset();
+        Path = GameManager.Instance.GetUnitPath();
+        this.transform.position = Path.At(0).transform.position;
     }
 
     // Update is called once per frame
     void Update () {
-        if (curIndex < Path.Length)
+        if (curIndex < Path.Length && this.gameObject.activeSelf)
         {
             if (target == null)
                 target = Path.At(curIndex).transform;
@@ -28,14 +29,14 @@ public class Pathing : MonoBehaviour {
         else
         {
             GameManager.Instance.ActiveUnits.Remove(this.GetComponent<Unit>());
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
     public void Reset()
     {
-        Path = GameManager.Instance.GetUnitPath();
-        this.transform.position = Path.At(0).transform.position;
+        this.gameObject.SetActive(true);
         curIndex = 0;
     }
 

@@ -31,8 +31,23 @@ public class Unit : MonoBehaviour {
         {
             var u = this.GetComponent<Unit>();
             GameManager.Instance.ActiveUnits.Remove(u);
-            this.enabled = false;
+            this.gameObject.SetActive(false);
+        }            
+    }
+
+    public void SetActive(bool active)
+    {
+        this.gameObject.SetActive(active);
+
+        if (active)
+        {
+            Reset();
+            this.GetComponentInParent<Pathing>().Reset();
         }
-            
+
+        else
+        {
+
+        }
     }
 }

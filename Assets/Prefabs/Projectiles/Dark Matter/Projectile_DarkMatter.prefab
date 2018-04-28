@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4910434308825660}
   - component: {fileID: 114888989138357942}
   - component: {fileID: 135936777057804890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile_DarkMatter
   m_TagString: Projectile
   m_Icon: {fileID: 0}

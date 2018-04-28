@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4431026345410942}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HEX_Decorations_GrassAndFlowers
   m_TagString: Decoration
   m_Icon: {fileID: 0}

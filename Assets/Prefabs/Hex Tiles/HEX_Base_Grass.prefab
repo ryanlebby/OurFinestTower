@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4723121587122668}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HEX_Base_Grass
   m_TagString: Terrain
   m_Icon: {fileID: 0}
