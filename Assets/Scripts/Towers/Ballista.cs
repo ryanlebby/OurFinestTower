@@ -11,11 +11,10 @@ public class Ballista : Tower
     public GameObject projectilePrefab;
     public Transform ProjectileSpawn;
 
-
-    private float RemainingCooldown = 0;
-    private Unit target = null;
+    private ObjectPool ArrowPool = new ObjectPool();
     private Arrow LoadedProjectile = null;
-
+    private Unit target = null;
+    private float RemainingCooldown = 0;
     private Animator anim;
 
     // Use this for initialization
@@ -91,13 +90,26 @@ public class Ballista : Tower
 
     void LoadProjectile()
     {
-        GameObject go = Instantiate(projectilePrefab, ProjectileSpawn.position, transform.rotation);
-        go.transform.parent = transform;
-        var p = go.GetComponent<Arrow>();
-        p.AttackDamage = p.BaseAttackPower + TowerAttackPower;
-        p.Tower = transform;
-        p.Range = Range;
-        LoadedProjectile = p;
+        GameObject go = ArrowPool.GetNextAvailable();
+
+        if (go != null)
+        {
+            go.transform.position = ProjectileSpawn.position;
+            go.transform.rotation = transform.rotation;
+            go.GetComponent<Arrow>().Reset();
+        }
+        
+        else
+        {
+            go = Instantiate(projectilePrefab, ProjectileSpawn.position, transform.rotation);
+            go.transform.parent = transform;
+        }
+        
+        var arrow = go.GetComponent<Arrow>();
+        arrow.AttackDamage = arrow.BaseAttackPower + TowerAttackPower;
+        arrow.Tower = transform;
+        arrow.Range = Range;
+        LoadedProjectile = arrow;
     }
 
     void Fire()

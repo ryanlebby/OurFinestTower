@@ -12,8 +12,10 @@ public class Mystic : Tower
     public Transform SpawnPoint;
     private DarkMatter LoadedProjectile = null;
 
-    private float RemainingCooldown = 0;
+    private ObjectPool DarkMatterPool = new ObjectPool();
     private Unit target = null;
+    private float RemainingCooldown = 0;
+    
 
     // Use this for initialization
     public new void Start()
@@ -32,10 +34,10 @@ public class Mystic : Tower
 
         if (RemainingCooldown <= 0)
         {
-            if (target == null || Vector3.Distance(transform.position, target.transform.position) >= Range)
+            if (target == null || !target.gameObject.activeSelf || Vector3.Distance(transform.position, target.transform.position) >= Range)
                 SearchForTarget();
 
-            if (target != null)
+            if (target != null && target.gameObject.activeSelf)
             {
                 Fire();
                 RemainingCooldown = TimeBetweenAttacks;
@@ -78,18 +80,32 @@ public class Mystic : Tower
 
     void LoadProjectile()
     {
-        GameObject go = Instantiate(projectilePrefab, SpawnPoint.position, transform.rotation);
-        go.transform.parent = transform;
-        var p = go.GetComponent<DarkMatter>();
-        p.AttackDamage = p.BaseAttackPower + TowerAttackPower;
-        p.Tower = transform;
-        p.Range = Range;
-        LoadedProjectile = p;
+        GameObject go = DarkMatterPool.GetNextAvailable();
+
+        if (go != null)
+        {
+            go.SetActive(true);
+            go.transform.position = SpawnPoint.position;
+            go.transform.rotation = transform.rotation;
+            go.GetComponent<DarkMatter>().Reset();
+        }
+        else
+        {
+            go = Instantiate(projectilePrefab, SpawnPoint.position, transform.rotation);
+            go.transform.parent = transform;
+            DarkMatterPool.Add(go);
+        }
+        
+        var dm = go.GetComponent<DarkMatter>();
+        LoadedProjectile = dm;
+        dm.AttackDamage = dm.BaseAttackPower + TowerAttackPower;
+        dm.Tower = transform;
+        dm.Range = Range;        
     }
 
     void Fire()
     {
-        if (target != null)
+        if (target != null && target.gameObject.activeSelf)
         {
             LoadedProjectile.Target = target;
             LoadedProjectile.IsFired = true;

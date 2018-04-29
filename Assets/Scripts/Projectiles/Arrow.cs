@@ -34,14 +34,14 @@ public class Arrow : Projectile
 
             selfDestructTimer += Time.deltaTime;
             if (selfDestructTimer >= selfDestructLimit)
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
         }
 
         else if (IsFired)
         {
             if (Vector3.Distance(transform.position, Tower.transform.position) > Range || !Target.gameObject.activeSelf)
             {
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
             }
 
             else
@@ -68,5 +68,12 @@ public class Arrow : Projectile
                 this.transform.parent = Target.transform;
             }
         }
+    }
+
+    public void Reset()
+    {
+        IsFired = false;
+        selfDestructMode = false;
+        Target = null;
     }
 }

@@ -24,6 +24,7 @@ public class DarkMatter : Projectile
     public bool IsFired { get; set; }
 
     private StatusDM status = StatusDM.Normal;
+    private Vector3 initialSize;
     private Vector3 spawnSize;
     public float detonationTimer = 2.0f;
     private float timer;
@@ -32,6 +33,7 @@ public class DarkMatter : Projectile
     // Use this for initialization
     void Start()
     {
+        initialSize = transform.localScale;
         IsFired = false;
         Spawn();
     }
@@ -53,9 +55,9 @@ public class DarkMatter : Projectile
         {
             if (IsFired)
             {
-                if (Vector3.Distance(transform.position, Tower.transform.position) > Range || Target == null)
+                if (Vector3.Distance(transform.position, Tower.transform.position) > Range || Target == null || !Target.gameObject.activeSelf)
                 {
-                    Destroy(this.gameObject);
+                    Detonate();
                 }
 
                 else
@@ -67,6 +69,14 @@ public class DarkMatter : Projectile
                 }
             }
         }        
+    }
+
+    public void Reset()
+    {
+        transform.localScale = initialSize;
+        IsFired = false;
+        Target = null;
+        Spawn();
     }
 
     void OnTriggerEnter(Collider other)
@@ -93,7 +103,7 @@ public class DarkMatter : Projectile
                     unit.TakeDamage(AttackDamage * 1.5f);
                 }
             }
-            Destroy(this.gameObject);            
+            this.gameObject.SetActive(false);            
         }
     }
 

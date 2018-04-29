@@ -8,7 +8,7 @@ public class UnitSpawner : MonoBehaviour {
     public List<GameObject> UnitPrefabs = new List<GameObject>();
     public float SpawnRate = 3.0f;
 
-    private List<Unit> UnitSupply = new List<Unit>();
+    private ObjectPool UnitPool = new ObjectPool();
 
 	// Use this for initialization
 	void Start () {
@@ -17,31 +17,21 @@ public class UnitSpawner : MonoBehaviour {
 	
 	public void SpawnUnit()
     {
-        var unit = GetNextAvailableUnit();
-        GameObject go;
+        GameObject go = UnitPool.GetNextAvailable();
 
-        if (unit != null)
-        {
-            go = unit.gameObject;
-            unit.transform.position = transform.position;
-            unit.Reset();
-            unit.GetComponent<Pathing>().Reset();
+        if (go != null)
+        {         
+            go.GetComponent<Pathing>().Reset();
+            go.GetComponent<Unit>().Reset();
+            go.SetActive(true);
         }
         else
         {
             go = Instantiate(UnitPrefabs[Random.Range(0, UnitPrefabs.Count)], transform.position + Vector3.up, Quaternion.identity);
-            unit = go.GetComponent<Unit>();
-            UnitSupply.Add(unit);
+            go.transform.parent = this.transform;
+            UnitPool.Add(go);           
         }
-
-        unit.enabled = true;
-        go.transform.parent = this.transform;
-        GameManager.Instance.ActiveUnits.Add(unit);
-
-    }
-
-    private Unit GetNextAvailableUnit()
-    {
-        return UnitSupply.Where(u => u.enabled == false).FirstOrDefault();
+        
+        GameManager.Instance.ActiveUnits.Add(go.GetComponent<Unit>());
     }
 }

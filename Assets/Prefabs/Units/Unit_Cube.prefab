@@ -22,12 +22,10 @@ GameObject:
   - component: {fileID: 33035737782070706}
   - component: {fileID: 65457208666049204}
   - component: {fileID: 23773099344071212}
-  - component: {fileID: 114307489832174794}
-  - component: {fileID: 114063394021454638}
   - component: {fileID: 54502831402590514}
   - component: {fileID: 114761659609966466}
   - component: {fileID: 114821347618211478}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Unit_Cube
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -169,28 +167,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114063394021454638
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1279029426537184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114307489832174794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1279029426537184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114569970230970750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a527c970a7acc49ac9282cb46af281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 40
+  MaxHealth: 70
   HealthBar: {fileID: 114861281409132502}
 --- !u!114 &114861281409132502
 MonoBehaviour:

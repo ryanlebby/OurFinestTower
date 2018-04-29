@@ -75,7 +75,7 @@ public class Camera_Main : MonoBehaviour {
         if (scroll != 0f)
         {
             var cam = Camera.main.transform;
-            var newPos = cam.position + cam.forward * scroll * scrollSpeed * 100 * Time.deltaTime;
+            var newPos = cam.position + cam.forward * scroll * scrollSpeed;
             cam.position = newPos;
         }
     }

@@ -13,7 +13,7 @@ public class Pathing : MonoBehaviour {
     void Start()
     {
         Path = GameManager.Instance.GetUnitPath();
-        this.transform.position = Path.At(0).transform.position;
+        transform.position = Path.At(0).transform.position;
     }
 
     // Update is called once per frame
@@ -23,24 +23,17 @@ public class Pathing : MonoBehaviour {
             if (target == null)
                 target = Path.At(curIndex).transform;
 
-            walk();
+            Walk();
         }
 
         else
         {
             GameManager.Instance.ActiveUnits.Remove(this.GetComponent<Unit>());
-            //Destroy(this.gameObject);
             this.gameObject.SetActive(false);
         }
-    }
+    }    
 
-    public void Reset()
-    {
-        this.gameObject.SetActive(true);
-        curIndex = 0;
-    }
-
-    void walk()
+    void Walk()
     {
         // rotate towards the target
         transform.forward = Vector3.RotateTowards(transform.forward, target.position - transform.position, speed * Time.deltaTime, 0.0f);
@@ -53,5 +46,12 @@ public class Pathing : MonoBehaviour {
             curIndex++;
             target = Path.At(curIndex).transform;
         }
+    }
+
+    public void Reset()
+    {
+        target = null;
+        curIndex = 0;
+        transform.position = Path.At(0).transform.position;
     }
 }
