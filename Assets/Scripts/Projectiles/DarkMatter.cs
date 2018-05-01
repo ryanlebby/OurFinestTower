@@ -2,31 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum StatusDM
-{
-    Normal,
-    Spawning,    
-    Detonating
-}
-
 public class DarkMatter : Projectile
 {
-    public float BaseAttackPower = 0f;
+    public float BaseAttackPower = 0f;    
     public float BaseSpeed = 10f;
-    public Unit Target = null;
+    public float SpawnGrowthSpeed = 0.075f;    
+    public float DetonateTimer = 2.0f;
+    public float DetonateGrowthSpeed = 0.075f;
     public float DetonateRange = 3f;
-    public float SizeIncrease = 0.075f;
-    public float SpawnSpeed = 0.075f;
+    public float DetonateDmgMultiplier = 1.5f;
+      
 
-    public float AttackDamage { get; set; }
+    public float CalculatedAttackDamage { get; set; }
+    public Unit Target { get; set; }
     public Transform Tower { get; set; }
+    public float TowerAttackPower { get; set; }
     public float Range { get; set; }
     public bool IsFired { get; set; }
+    public bool IsDetonating { get; set; }
 
-    private StatusDM status = StatusDM.Normal;
     private Vector3 initialSize;
-    private Vector3 spawnSize;
-    public float detonationTimer = 2.0f;
+    private Vector3 spawnSize;    
     private float timer;
 
 
@@ -35,40 +31,33 @@ public class DarkMatter : Projectile
     {
         initialSize = transform.localScale;
         IsFired = false;
-        Spawn();
+        StartCoroutine("Spawn");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (status == StatusDM.Spawning)
+        if (IsFired && !IsDetonating)
         {
-            UpdateSpawn();
-        }
-
-        else if (status == StatusDM.Detonating)
-        {
-            UpdateDetonation();
-        }
-
-        else
-        {
-            if (IsFired)
+            if (Vector3.Distance(transform.position, Tower.transform.position) > Range 
+                || Target == null 
+                || !Target.gameObject.activeSelf)
             {
-                if (Vector3.Distance(transform.position, Tower.transform.position) > Range || Target == null || !Target.gameObject.activeSelf)
-                {
-                    Detonate();
-                }
+                StartCoroutine("Detonate");
+            }
 
-                else
+            else
+            {
+                if (transform.position != Target.transform.position)
                 {
-                    if (transform.position != Target.transform.position)
-                    {
-                        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, BaseSpeed * Time.deltaTime);
-                    }
+                    transform.position = Vector3.MoveTowards(
+                        transform.position, 
+                        Target.transform.position, 
+                        BaseSpeed * Time.deltaTime
+                    );
                 }
             }
-        }        
+        }       
     }
 
     public void Reset()
@@ -76,60 +65,55 @@ public class DarkMatter : Projectile
         transform.localScale = initialSize;
         IsFired = false;
         Target = null;
-        Spawn();
+        StartCoroutine("Spawn");
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Unit>() == Target)
+        if (other.GetComponent<Unit>() == Target && !IsDetonating)
         {
-            Target.TakeDamage(AttackDamage);
-            Detonate();
+            Target.TakeDamage(CalculatedAttackDamage);
+            StartCoroutine("Detonate");
         }            
     }
 
-    void UpdateDetonation()
+    IEnumerator Detonate()
     {
-        timer -= detonationTimer * Time.deltaTime;
+        IsDetonating = true;
+        timer = DetonateTimer;
 
-        transform.localScale += Vector3.one * SizeIncrease;        
-
-        if (timer <= 0)
+        while (timer > 0)
         {
-            foreach (var unit in GameManager.Instance.ActiveUnits)
+            timer -= DetonateTimer * Time.deltaTime;
+            transform.localScale += Vector3.one * DetonateGrowthSpeed;
+            yield return null;
+        }
+
+        foreach (var unit in GameManager.Instance.ActiveUnits)
+        {
+            if (Vector3.Distance(transform.position, unit.transform.position) <= DetonateRange)
             {
-                if (Vector3.Distance(transform.position, unit.transform.position) <= DetonateRange)
-                {
-                    unit.TakeDamage(AttackDamage * 1.5f);
-                }
+                unit.TakeDamage(CalculatedAttackDamage * DetonateDmgMultiplier);
             }
-            this.gameObject.SetActive(false);            
         }
+
+        this.gameObject.SetActive(false);
     }
 
-    void UpdateSpawn()
-    {
-        transform.localScale *= 1 + SpawnSpeed;
-        var col = this.gameObject.GetComponentInChildren<Renderer>().material.color;
-        col.a = 0.5f;
-
-        if (transform.localScale.x >= spawnSize.x)
-        {
-            transform.localScale = spawnSize;
-            status = StatusDM.Normal;
-        }
-    }
-
-    void Detonate()
-    {
-        status = StatusDM.Detonating;
-        timer = detonationTimer;
-    }
-
-    void Spawn()
+    IEnumerator Spawn()
     {
         spawnSize = transform.localScale;
         transform.localScale /= 10f;
-        status = StatusDM.Spawning;
+
+        while (transform.localScale.x <= spawnSize.x)
+        {
+            transform.localScale *= 1 + SpawnGrowthSpeed;
+            var col = this.gameObject.GetComponentInChildren<Renderer>().material.color;
+            col.a = 0.5f;
+
+            yield return null;
+        }
+
+        transform.localScale = spawnSize;
     }
 }

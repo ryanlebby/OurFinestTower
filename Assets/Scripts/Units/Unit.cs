@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
 
+    public float MoveSpeed = 6f;
     public float MaxHealth = 20f;    
     public Image HealthBar;
 
@@ -43,11 +44,6 @@ public class Unit : MonoBehaviour {
         {
             Reset();
             this.GetComponentInParent<Pathing>().Reset();
-        }
-
-        else
-        {
-
         }
     }
 }

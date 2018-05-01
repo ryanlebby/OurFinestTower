@@ -29,7 +29,7 @@ public class Arrow : Projectile
         {
             if (Target == null || !Target.gameObject.activeSelf)
             {
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
             }
 
             selfDestructTimer += Time.deltaTime;

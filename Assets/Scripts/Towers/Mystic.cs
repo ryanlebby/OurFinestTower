@@ -98,7 +98,7 @@ public class Mystic : Tower
         
         var dm = go.GetComponent<DarkMatter>();
         LoadedProjectile = dm;
-        dm.AttackDamage = dm.BaseAttackPower + TowerAttackPower;
+        dm.TowerAttackPower = TowerAttackPower;
         dm.Tower = transform;
         dm.Range = Range;        
     }

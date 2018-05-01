@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65457208666049204}
   - component: {fileID: 23773099344071212}
   - component: {fileID: 54502831402590514}
+  - component: {fileID: 114899756658912792}
   - component: {fileID: 114761659609966466}
   - component: {fileID: 114821347618211478}
   m_Layer: 12
@@ -77,7 +78,7 @@ GameObject:
   - component: {fileID: 223415524142816082}
   - component: {fileID: 114884838325827922}
   - component: {fileID: 114569970230970750}
-  - component: {fileID: 114865596311012192}
+  - component: {fileID: 114889976328475436}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -194,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0a8d8a086f5f248b231fb7fb4e790d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   Path: {fileID: 0}
 --- !u!114 &114820273055799996
 MonoBehaviour:
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a527c970a7acc49ac9282cb46af281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSpeed: 4
   MaxHealth: 250
   HealthBar: {fileID: 114861281409132502}
 --- !u!114 &114861281409132502
@@ -263,17 +264,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 1
---- !u!114 &114865596311012192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724343011240906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4836e6684a5413a4da844a8f6d0cc9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114884838325827922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,6 +285,28 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114889976328475436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724343011240906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4836e6684a5413a4da844a8f6d0cc9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114899756658912792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1279029426537184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc89cc4e08350664abc905d1736ce5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222037876293602628
 CanvasRenderer:
   m_ObjectHideFlags: 1
