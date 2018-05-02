@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44917637, g: 0.49924558, b: 0.57571507, a: 1}
+  m_IndirectSpecularColor: {r: 0.1822417, g: 0.22794527, b: 0.30735052, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3255,7 +3255,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 446704592}
   m_LocalRotation: {x: 0.38287124, y: 0.30932996, z: -0.0028417478, w: 0.8704692}
-  m_LocalPosition: {x: -1, y: 8, z: -2.5}
+  m_LocalPosition: {x: -29.5, y: 17.5, z: -11.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3472,7 +3472,6 @@ GameObject:
   - component: {fileID: 488158997}
   - component: {fileID: 488158996}
   - component: {fileID: 488159001}
-  - component: {fileID: 488159002}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3549,26 +3548,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 488158995}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d8f993d5d0bb6418fa511c835a00b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 50
---- !u!114 &488159002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 488158995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3293ea84974364c94ceca377000ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 4
-  panSpeed: 4
-  zoomSpeed: 4
 --- !u!1001 &495632867
 Prefab:
   m_ObjectHideFlags: 0
