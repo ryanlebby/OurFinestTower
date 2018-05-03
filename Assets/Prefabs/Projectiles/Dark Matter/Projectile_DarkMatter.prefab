@@ -264,13 +264,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3167a1d93c9818447a05efad0a4db76d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseAttackPower: 0
-  BaseSpeed: 10
-  Target: {fileID: 0}
+  AttackPower: 0
+  Velocity: 10
+  Range: 0
+  SpawnGrowthSpeed: 0.075
+  DetonateTimer: 2
+  DetonateGrowthSpeed: 0.075
   DetonateRange: 3
-  SizeIncrease: 0.04
-  SpawnSpeed: 0.075
-  detonationTimer: 2
+  DetonateDmgMultiplier: 1.5
 --- !u!135 &135936777057804890
 SphereCollider:
   m_ObjectHideFlags: 1

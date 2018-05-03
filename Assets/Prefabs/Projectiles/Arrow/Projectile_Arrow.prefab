@@ -268,9 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5e2883920e882439fd9319badc9e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseAttackPower: 0
-  BaseSpeed: 25
-  Target: {fileID: 0}
+  AttackPower: 0
+  Velocity: 25
+  Range: 0
+  SelfDestructTimer: 0.8
 --- !u!135 &135591417560503246
 SphereCollider:
   m_ObjectHideFlags: 1

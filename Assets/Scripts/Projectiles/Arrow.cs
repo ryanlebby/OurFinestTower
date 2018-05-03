@@ -3,44 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : Projectile
-{
+{    
+    public float SelfDestructTimer;
+    public bool SelfDestructMode { get; set; }
 
-    public float BaseAttackPower = 0f;
-    public float BaseSpeed = 10f;
-    public Unit Target = null;
+    new void Start()
+    {
+        base.Start();
+        SelfDestructMode = false;
+    }
 
-    public float AttackDamage { get; set; }
-    public Transform Tower { get; set; }
-    public float Range { get; set; }
-    public bool IsFired { get; set; }
+    void Update () {
 
-    private bool selfDestructMode = false;
-    private float selfDestructTimer = 0f;
-    private float selfDestructLimit = 0.8f;
+        //if (!this.gameObject.activeSelf)
+        //{
+        //    SelfDestructMode = false;
+        //}            
 
-    // Use this for initialization
-    void Start () {
-        IsFired = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (selfDestructMode)
+        if (IsFired && !SelfDestructMode)
         {
-            if (Target == null || !Target.gameObject.activeSelf)
-            {
-                this.gameObject.SetActive(false);
-            }
+            ValidateTarget();
 
-            selfDestructTimer += Time.deltaTime;
-            if (selfDestructTimer >= selfDestructLimit)
-                this.gameObject.SetActive(false);
-        }
-
-        else if (IsFired)
-        {
-            if (Vector3.Distance(transform.position, Tower.transform.position) > Range || !Target.gameObject.activeSelf)
+            if (Target == null)
             {
+                IsFired = false;
                 this.gameObject.SetActive(false);
             }
 
@@ -50,30 +36,53 @@ public class Arrow : Projectile
 
                 if (transform.position != Target.transform.position)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, BaseSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Velocity * Time.deltaTime);
                 }
             }
         }        
 	}
 
+    IEnumerator SelfDestruct()
+    {
+        SelfDestructMode = true;
+        float timer = SelfDestructTimer;
+
+        while (timer > 0f)
+        {
+            ValidateTarget();
+
+            if (Target == null)
+                break;
+
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        SelfDestructMode = false;
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        SelfDestructMode = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Unit>() == Target)
+        if (other.transform == Target)
         {
-            Target.TakeDamage(AttackDamage);
-            selfDestructMode = true;
+            Target.GetComponent<Unit>().TakeDamage(AttackPower);            
 
             if (Target.gameObject.activeSelf)
-            {
-                this.transform.parent = Target.transform;
-            }
+                this.transform.parent = Target;
+
+            StartCoroutine("SelfDestruct");
         }
     }
 
-    public void Reset()
+    new void Reset()
     {
-        IsFired = false;
-        selfDestructMode = false;
-        Target = null;
+        base.Reset();
+        SelfDestructMode = false;
     }
 }

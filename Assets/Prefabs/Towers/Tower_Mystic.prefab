@@ -777,12 +777,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad550b0d0ebb43a49b1d05f2daca15f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerAttackPower: 8
+  AttackPower: 8
+  AttackSpeed: 1.5
   Range: 24
-  TimeBetweenAttacks: 3
-  projectilePrefab: {fileID: 1740430073282444, guid: 40ef5fda42a6dc64f941876de0f0167d,
+  ProjectilePrefab: {fileID: 1740430073282444, guid: 40ef5fda42a6dc64f941876de0f0167d,
     type: 2}
-  SpawnPoint: {fileID: 4544790502668288}
+  ProjectileSpawnPoint: {fileID: 4544790502668288}
 --- !u!114 &114835901356081768
 MonoBehaviour:
   m_ObjectHideFlags: 1
