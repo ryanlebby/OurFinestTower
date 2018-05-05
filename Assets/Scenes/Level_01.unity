@@ -4618,7 +4618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitPrefabs:
   - {fileID: 1279029426537184, guid: a6f97d1186712164094cbb79414c6ce1, type: 2}
-  SpawnRate: 2.5
+  MinSpawnRate: 3
+  MaxSpawnRate: 0.5
 --- !u!1001 &664471120
 Prefab:
   m_ObjectHideFlags: 0

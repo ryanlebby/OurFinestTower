@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 4
-  MaxHealth: 250
+  MaxHealth: 100
   HealthBar: {fileID: 114861281409132502}
 --- !u!114 &114861281409132502
 MonoBehaviour:

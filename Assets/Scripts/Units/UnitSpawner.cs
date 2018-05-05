@@ -6,16 +6,34 @@ using UnityEngine;
 public class UnitSpawner : MonoBehaviour {
 
     public List<GameObject> UnitPrefabs = new List<GameObject>();
-    public float SpawnRate = 3.0f;
+    public float MinSpawnRate = 2.5f;
+    public float MaxSpawnRate = 0.2f;
 
     private ObjectPool UnitPool = new ObjectPool();
+    private float SpawnTimer;
 
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("SpawnUnit", 2.0f, SpawnRate);
+        
 	}
-	
-	public void SpawnUnit()
+
+    private void Update()
+    {
+        SpawnTimer -= Time.deltaTime;
+
+        if (SpawnTimer < 0)
+        {
+            SpawnUnit();
+            ResetTimer();
+        }
+    }
+
+    public void ResetTimer()
+    {
+        SpawnTimer = Random.Range(MaxSpawnRate, MinSpawnRate);
+    }
+
+    public void SpawnUnit()
     {
         GameObject go = UnitPool.GetNextAvailable();
 
