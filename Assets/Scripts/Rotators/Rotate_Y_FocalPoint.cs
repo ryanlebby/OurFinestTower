@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotatorY_FocalPoint : MonoBehaviour {
+public class Rotate_Y_FocalPoint : MonoBehaviour {
 
     public Transform FocalPoint;
     public bool clockwise = true;

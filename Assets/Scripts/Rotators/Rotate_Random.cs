@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotatorXYZ : MonoBehaviour {
+public class Rotate_Random : MonoBehaviour {
 
     private Vector3 rotation = new Vector3(1, 0, 0);
     private float speed = 0f;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotatorY : MonoBehaviour {
+public class Rotate_Y : MonoBehaviour {
 
     public bool clockwise = true;
     public float speed = 30f;
