@@ -37,6 +37,7 @@ public class Ballista : Tower
             {
                 anim.Play("Fire");
                 LoadedProjectile.Fire(Target, ProjectileSpawnPoint);
+                LoadedProjectile.Origin = this.transform;
                 LoadedProjectile = null;
                 StartCoroutine("WaitForAttackCooldown");
             }

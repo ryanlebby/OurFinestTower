@@ -13,38 +13,67 @@ public class DarkMatter : Projectile
     public bool IsDetonating { get; set; }
     public bool IsSpawning { get; set; }
 
-    private Vector3 initialSize;
-    private Vector3 spawnSize;    
+    private Vector3 initialSize;  
     private float timer;
-    private bool flagAsInactive = false;
 
     // Use this for initialization
     new void Start()
     {
         base.Start();
         initialSize = transform.localScale;
-        StartCoroutine("Spawn");
+        Spawn();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (flagAsInactive)
+        if (IsSpawning)
         {
-            this.gameObject.SetActive(false);
-            Reset();
-            flagAsInactive = false;
+            if (transform.localScale.x <= initialSize.x)
+            {
+                transform.localScale *= 1 + SpawnGrowthSpeed;
+            }
+
+            else
+            {
+                transform.localScale = initialSize;
+                IsSpawning = false;
+            }            
+        }
+
+        else if (IsDetonating)
+        {
+            if (timer > 0)
+            {
+                timer -= DetonateTimer * Time.deltaTime;
+                transform.localScale += Vector3.one * DetonateGrowthSpeed;
+            }
+            
+            else
+            {
+                foreach (var unit in GameManager.Instance.ActiveUnits)
+                {
+                    if (Vector3.Distance(transform.position, unit.transform.position) <= DetonateRange)
+                    {
+                        unit.TakeDamage(AttackPower * DetonateDmgMultiplier);
+                    }
+                }
+
+                IsDetonating = false;
+                transform.localScale = initialSize;
+                gameObject.SetActive(false);
+            }
         }
 
         // Fired, but not detonated
-        if (IsFired && !IsDetonating && !IsSpawning)
+        else if (IsFired)
         {
             ValidateTarget();
 
             // If no target
             if (Target == null)
             {
-                flagAsInactive = true;
+                gameObject.SetActive(false);
             }
 
             // If projectile has not reached target,
@@ -63,62 +92,31 @@ public class DarkMatter : Projectile
     public override void Reset()
     {
         base.Reset();
-        IsSpawning = false;
         IsDetonating = false;
         transform.localScale = initialSize;
+        Spawn();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        //if (Target != null)
-        //{
-            if (other.transform == Target && !IsDetonating)
-            {
-                Target.GetComponent<Unit>().TakeDamage(AttackPower);
-                Target = null;
-                IsFired = false;
-                StartCoroutine("Detonate");
-            }
-        //}        
+        if (other.transform == Target && !IsDetonating)
+        {
+            Target.GetComponent<Unit>().TakeDamage(AttackPower);
+            Target = null;
+            IsFired = false;
+            Detonate();
+        }       
     }
 
-    IEnumerator Detonate()
+    void Detonate()
     {
         IsDetonating = true;
         timer = DetonateTimer;
-
-        while (timer > 0)
-        {
-            timer -= DetonateTimer * Time.deltaTime;
-            transform.localScale += Vector3.one * DetonateGrowthSpeed;
-            yield return null;
-        }
-
-        foreach (var unit in GameManager.Instance.ActiveUnits)
-        {
-            if (Vector3.Distance(transform.position, unit.transform.position) <= DetonateRange)
-            {
-                unit.TakeDamage(AttackPower * DetonateDmgMultiplier);
-            }
-        }
-
-        IsDetonating = false;
-        transform.localScale = initialSize;
-        flagAsInactive = true;        
     }
 
-    IEnumerator Spawn()
+    void Spawn()
     {
         IsSpawning = true;
         transform.localScale = initialSize / 10f;
-
-        while (transform.localScale.x <= initialSize.x)
-        {
-            transform.localScale *= 1 + SpawnGrowthSpeed;
-            yield return null;
-        }
-
-        transform.localScale = initialSize;
-        IsSpawning = false;
     }
 }

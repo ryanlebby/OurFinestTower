@@ -271,7 +271,7 @@ MonoBehaviour:
   AttackPower: 0
   Velocity: 25
   Range: 0
-  SelfDestructTimer: 0.8
+  SelfDestructDuration: 0.8
 --- !u!135 &135591417560503246
 SphereCollider:
   m_ObjectHideFlags: 1

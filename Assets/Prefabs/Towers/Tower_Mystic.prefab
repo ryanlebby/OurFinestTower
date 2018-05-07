@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 4762644021110506}
   - component: {fileID: 33829370019015632}
   - component: {fileID: 23011141004458324}
+  - component: {fileID: 114044782567739770}
   m_Layer: 0
   m_Name: PlatformMain
   m_TagString: Untagged
@@ -712,6 +713,19 @@ MonoBehaviour:
   FocalPoint: {fileID: 4544790502668288}
   clockwise: 0
   speed: 75
+--- !u!114 &114044782567739770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1814962157610732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deefde0de424e5e4f8c3ad4e18adead8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clockwise: 0
+  speed: 120
 --- !u!114 &114101753330450886
 MonoBehaviour:
   m_ObjectHideFlags: 1

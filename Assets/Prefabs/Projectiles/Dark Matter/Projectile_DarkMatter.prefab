@@ -269,7 +269,7 @@ MonoBehaviour:
   Range: 0
   SpawnGrowthSpeed: 0.075
   DetonateTimer: 2
-  DetonateGrowthSpeed: 0.075
+  DetonateGrowthSpeed: 0.05
   DetonateRange: 3
   DetonateDmgMultiplier: 1.5
 --- !u!135 &135936777057804890

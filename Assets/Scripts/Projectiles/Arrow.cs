@@ -4,23 +4,40 @@ using UnityEngine;
 
 public class Arrow : Projectile
 {    
-    public float SelfDestructTimer;
+    public float SelfDestructDuration;
     public bool SelfDestructMode { get; set; }
+
+    private float timer;
 
     new void Start()
     {
         base.Start();
-        SelfDestructMode = false;
+        SelfDestructMode = false;        
     }
 
     void Update () {
 
-        //if (!this.gameObject.activeSelf)
-        //{
-        //    SelfDestructMode = false;
-        //}            
+        if (SelfDestructMode)
+        {
+            if (timer > 0)
+            {
+                ValidateTarget();
 
-        if (IsFired && !SelfDestructMode)
+                if (Target == null)
+                    timer = 0;
+                else
+                    timer -= Time.deltaTime;
+            }
+
+            else
+            {
+                SelfDestructMode = false;
+                this.transform.parent = Origin.transform;
+                this.gameObject.SetActive(false);
+            }            
+        }           
+
+        if (IsFired)
         {
             ValidateTarget();
 
@@ -42,29 +59,11 @@ public class Arrow : Projectile
         }        
 	}
 
-    IEnumerator SelfDestruct()
+    void SelfDestruct()
     {
         SelfDestructMode = true;
-        float timer = SelfDestructTimer;
-
-        while (timer > 0f)
-        {
-            ValidateTarget();
-
-            if (Target == null)
-                break;
-
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-
-        SelfDestructMode = false;
-        this.gameObject.SetActive(false);
-    }
-
-    private void OnDisable()
-    {
-        SelfDestructMode = false;
+        IsFired = false;
+        timer = SelfDestructDuration;
     }
 
     void OnTriggerEnter(Collider other)
@@ -76,7 +75,7 @@ public class Arrow : Projectile
             if (Target.gameObject.activeSelf)
                 this.transform.parent = Target;
 
-            StartCoroutine("SelfDestruct");
+            SelfDestruct();
         }
     }
 
