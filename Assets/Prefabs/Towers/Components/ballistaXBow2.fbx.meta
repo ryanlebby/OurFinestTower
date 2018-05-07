@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 790852b24b4524d46b02244f05e18504
+timeCreated: 1525735282
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature.001
+    100002: //RootNode
+    100004: Barrel
+    100006: Bow
+    100008: Cylinder.001
+    100010: Handle
+    100012: Hook
+    100014: L1
+    100016: L2
+    100018: L3
+    100020: L4
+    100022: L5
+    100024: L6
+    100026: L7
+    100028: L7_end
+    100030: left_ik
+    100032: left_ik_end
+    100034: left_limit
+    100036: left_limit_end
+    100038: left_rotator
+    100040: Main
+    100042: R1
+    100044: R2
+    100046: R3
+    100048: R4
+    100050: R5
+    100052: R6
+    100054: R7
+    100056: R7_end
+    100058: Rig
+    100060: right_ik
+    100062: right_ik_end
+    100064: right_limit
+    100066: right_limit_end
+    100068: right_rotator
+    100070: String
+    100072: String_end
+    100074: Trigger
+    400000: Armature.001
+    400002: //RootNode
+    400004: Barrel
+    400006: Bow
+    400008: Cylinder.001
+    400010: Handle
+    400012: Hook
+    400014: L1
+    400016: L2
+    400018: L3
+    400020: L4
+    400022: L5
+    400024: L6
+    400026: L7
+    400028: L7_end
+    400030: left_ik
+    400032: left_ik_end
+    400034: left_limit
+    400036: left_limit_end
+    400038: left_rotator
+    400040: Main
+    400042: R1
+    400044: R2
+    400046: R3
+    400048: R4
+    400050: R5
+    400052: R6
+    400054: R7
+    400056: R7_end
+    400058: Rig
+    400060: right_ik
+    400062: right_ik_end
+    400064: right_limit
+    400066: right_limit_end
+    400068: right_rotator
+    400070: String
+    400072: String_end
+    400074: Trigger
+    2100000: Tower_Ballista
+    2100002: Hook
+    4300000: Cylinder.001
+    4300002: Hook
+    4300004: Handle
+    4300006: Trigger
+    4300008: Bow
+    4300010: Barrel
+    7400000: Rig|Fire
+    9500000: //RootNode
+    13700000: Barrel
+    13700002: Bow
+    13700004: Cylinder.001
+    13700006: Handle
+    13700008: Hook
+    13700010: Trigger
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

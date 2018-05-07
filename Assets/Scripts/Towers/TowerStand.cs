@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TowerStand : MonoBehaviour {
 
+    public GameObject Rotator;
     private Transform Tower;
 
 	// Use this for initialization
@@ -14,6 +15,6 @@ public class TowerStand : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         var euler = Tower.rotation.eulerAngles;
-        transform.rotation = Quaternion.Euler(0, euler.y, 0);
+        Rotator.transform.rotation = Quaternion.Euler(0, euler.y, 0);
 	}
 }
