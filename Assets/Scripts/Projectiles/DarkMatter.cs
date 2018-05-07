@@ -16,6 +16,7 @@ public class DarkMatter : Projectile
     private Vector3 initialSize;
     private Vector3 spawnSize;    
     private float timer;
+    private bool flagAsInactive = false;
 
     // Use this for initialization
     new void Start()
@@ -28,16 +29,22 @@ public class DarkMatter : Projectile
     // Update is called once per frame
     void Update()
     {
+        if (flagAsInactive)
+        {
+            this.gameObject.SetActive(false);
+            Reset();
+            flagAsInactive = false;
+        }
+
         // Fired, but not detonated
         if (IsFired && !IsDetonating && !IsSpawning)
         {
             ValidateTarget();
 
-            // Detonate if no target
+            // If no target
             if (Target == null)
             {
-                this.gameObject.SetActive(false);
-                //StartCoroutine("Detonate");
+                flagAsInactive = true;
             }
 
             // If projectile has not reached target,
@@ -56,21 +63,15 @@ public class DarkMatter : Projectile
     public override void Reset()
     {
         base.Reset();
-
-        if (!IsSpawning)
-            StartCoroutine("Spawn");
+        IsSpawning = false;
+        IsDetonating = false;
+        transform.localScale = initialSize;
     }
-
-    //private void OnEnable()
-    //{
-    //    transform.localScale = initialSize;
-    //    StartCoroutine("Spawn");
-    //}
 
     void OnTriggerEnter(Collider other)
     {
-        if (Target != null)
-        {
+        //if (Target != null)
+        //{
             if (other.transform == Target && !IsDetonating)
             {
                 Target.GetComponent<Unit>().TakeDamage(AttackPower);
@@ -78,7 +79,7 @@ public class DarkMatter : Projectile
                 IsFired = false;
                 StartCoroutine("Detonate");
             }
-        }        
+        //}        
     }
 
     IEnumerator Detonate()
@@ -103,21 +104,17 @@ public class DarkMatter : Projectile
 
         IsDetonating = false;
         transform.localScale = initialSize;
-        this.gameObject.SetActive(false);
+        flagAsInactive = true;        
     }
 
     IEnumerator Spawn()
     {
         IsSpawning = true;
-        //spawnSize = transform.localScale;
         transform.localScale = initialSize / 10f;
 
         while (transform.localScale.x <= initialSize.x)
         {
             transform.localScale *= 1 + SpawnGrowthSpeed;
-            var col = this.gameObject.GetComponentInChildren<Renderer>().material.color;
-            col.a = 0.5f;
-
             yield return null;
         }
 

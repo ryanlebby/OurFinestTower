@@ -12,11 +12,6 @@ public class UnitSpawner : MonoBehaviour {
     private ObjectPool UnitPool = new ObjectPool();
     private float SpawnTimer;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
-
     private void Update()
     {
         SpawnTimer -= Time.deltaTime;

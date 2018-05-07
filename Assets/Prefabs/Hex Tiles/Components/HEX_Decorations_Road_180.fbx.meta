@@ -21,6 +21,8 @@ ModelImporter:
     100026: Cube.012
     100028: Cube.013
     100030: Cube.014
+    100032: FlowerYellow.000
+    100034: Top
     400000: //RootNode
     400002: Cube.000
     400004: Cube.001
@@ -37,7 +39,10 @@ ModelImporter:
     400026: Cube.012
     400028: Cube.013
     400030: Cube.014
+    400032: FlowerYellow.000
+    400034: Top
     2100000: RoadSegment
+    2100002: HEX_Base_Grass
     2300000: //RootNode
     2300002: Cube.000
     2300004: Cube.001
@@ -54,6 +59,8 @@ ModelImporter:
     2300026: Cube.012
     2300028: Cube.013
     2300030: Cube.014
+    2300032: FlowerYellow.000
+    2300034: Top
     3300000: //RootNode
     3300002: Cube.000
     3300004: Cube.001
@@ -70,6 +77,8 @@ ModelImporter:
     3300026: Cube.012
     3300028: Cube.013
     3300030: Cube.014
+    3300032: FlowerYellow.000
+    3300034: Top
     4300000: Cube
     4300002: Cube.002
     4300004: Cube.014
@@ -86,6 +95,8 @@ ModelImporter:
     4300026: Cube.001
     4300028: Cube.009
     4300030: Cube.010
+    4300032: Top
+    4300034: FlowerYellow.000
   externalObjects:
   - first:
       type: UnityEngine:Material
