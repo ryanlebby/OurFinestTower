@@ -11936,14 +11936,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4546913436842272, guid: dd33062fb24d9434e90655276c313410, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.500001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4546913436842272, guid: dd33062fb24d9434e90655276c313410, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.500001
-      objectReference: {fileID: 0}
     - target: {fileID: 1079330500645254, guid: dd33062fb24d9434e90655276c313410, type: 2}
       propertyPath: m_Name
       value: Tower_Mystic (4)
