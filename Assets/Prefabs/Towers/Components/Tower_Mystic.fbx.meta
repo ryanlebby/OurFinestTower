@@ -15,6 +15,10 @@ ModelImporter:
     100014: PlatformMain
     100016: PlatformTop
     100018: //RootNode
+    100020: PlatformMain.001
+    100022: Crystal3.001
+    100024: Crystal3.002
+    100026: Crystal3.003
     400000: Arms
     400002: Crystal1
     400004: Crystal2
@@ -25,6 +29,10 @@ ModelImporter:
     400014: PlatformMain
     400016: PlatformTop
     400018: //RootNode
+    400020: PlatformMain.001
+    400022: Crystal3.001
+    400024: Crystal3.002
+    400026: Crystal3.003
     2100000: Tower_Mystic
     2300000: Arms
     2300002: Crystal1
@@ -35,6 +43,10 @@ ModelImporter:
     2300012: PlatformBottom
     2300014: PlatformMain
     2300016: PlatformTop
+    2300018: PlatformMain.001
+    2300020: Crystal3.001
+    2300022: Crystal3.002
+    2300024: Crystal3.003
     3300000: Arms
     3300002: Crystal1
     3300004: Crystal2
@@ -44,6 +56,10 @@ ModelImporter:
     3300012: PlatformBottom
     3300014: PlatformMain
     3300016: PlatformTop
+    3300018: PlatformMain.001
+    3300020: Crystal3.001
+    3300022: Crystal3.002
+    3300024: Crystal3.003
     4300000: Crystal4
     4300002: Crystal2
     4300004: Crystal3
@@ -53,6 +69,10 @@ ModelImporter:
     4300012: Arms
     4300014: Crystal1
     4300016: PlatformMain
+    4300018: PlatformMain.001
+    4300020: Crystal3.003
+    4300022: Crystal3.002
+    4300024: Crystal3.001
   externalObjects:
   - first:
       type: UnityEngine:Material
