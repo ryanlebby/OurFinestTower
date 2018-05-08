@@ -82,6 +82,9 @@ ModelImporter:
     400072: String_end
     400074: Trigger
     2100000: XBow
+    2100002: Tower_Ballista
+    2100004: Hook
+    2100006: Tower_Ballista_XBow
     4300000: Cylinder.001
     4300002: Hook
     4300004: Handle
@@ -97,6 +100,11 @@ ModelImporter:
     13700008: Hook
     13700010: Trigger
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tower_Ballista_XBow
+    second: {fileID: 2100000, guid: 4ca0e8ef7d8c4d94aa55a9951926b76c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
