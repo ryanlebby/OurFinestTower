@@ -96,7 +96,7 @@ public class Tower : MonoBehaviour {
         Projectile projectile;
         GameObject go = ProjectilePool.GetNextAvailable();
 
-        // Use existing DarkMatter instance if one is available.
+        // Use existing projectile instance if one is available.
         if (go != null)
         {
             go.transform.position = ProjectileSpawnPoint.position;
@@ -115,7 +115,6 @@ public class Tower : MonoBehaviour {
             ProjectilePool.Add(go);
             projectile = go.GetComponent<Projectile>();
             projectile.Initialize(this);
-            //projectile.Reset();
         }
 
         LoadedProjectile = projectile;

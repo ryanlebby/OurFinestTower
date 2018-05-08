@@ -11,15 +11,20 @@ public class Unit : MonoBehaviour {
     public Image HealthBar;
 
     public float Health { get; set; }
+    //private Vector3 initialSize;
 
     // Use this for initialization
     void Start () {
         Health = MaxHealth;
-	}
+        //initialSize = transform.localScale;
+        //transform.localScale *= MaxHealth / 200.0f;
+    }
 
     public void Reset()
     {
         Health = MaxHealth;
+        //transform.localScale = initialSize;
+        //transform.localScale *= MaxHealth / 100.0f;
         HealthBar.fillAmount = 1;
     }
 
