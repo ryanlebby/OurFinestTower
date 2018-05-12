@@ -1,4 +1,4 @@
-﻿Shader "Custom/GlowShader"
+﻿Shader "Custom/GlowEffect"
 {
 	Properties
 	{
