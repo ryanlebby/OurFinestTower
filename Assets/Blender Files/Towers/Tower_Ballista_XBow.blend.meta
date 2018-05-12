@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 6745f6a61e8c9ef45b76780c8b9d8986
+timeCreated: 1526126731
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature_001
+    100002: Barrel
+    100004: Bow
+    100006: Cylinder_001
+    100008: Handle
+    100010: Hook
+    100012: L1
+    100014: L2
+    100016: L3
+    100018: L4
+    100020: L5
+    100022: L6
+    100024: L7
+    100026: left_ik
+    100028: left_limit
+    100030: left_rotator
+    100032: Main
+    100034: R1
+    100036: R2
+    100038: R3
+    100040: R4
+    100042: R5
+    100044: R6
+    100046: R7
+    100048: Rig
+    100050: right_ik
+    100052: right_limit
+    100054: right_rotator
+    100056: String
+    100058: //RootNode
+    100060: Trigger
+    400000: Armature_001
+    400002: Barrel
+    400004: Bow
+    400006: Cylinder_001
+    400008: Handle
+    400010: Hook
+    400012: L1
+    400014: L2
+    400016: L3
+    400018: L4
+    400020: L5
+    400022: L6
+    400024: L7
+    400026: left_ik
+    400028: left_limit
+    400030: left_rotator
+    400032: Main
+    400034: R1
+    400036: R2
+    400038: R3
+    400040: R4
+    400042: R5
+    400044: R6
+    400046: R7
+    400048: Rig
+    400050: right_ik
+    400052: right_limit
+    400054: right_rotator
+    400056: String
+    400058: //RootNode
+    400060: Trigger
+    2100000: Tower_Ballista_XBow
+    2100002: Hook
+    4300000: Cylinder_001
+    4300002: Hook
+    4300004: Handle
+    4300006: Trigger
+    4300008: Bow
+    4300010: Barrel
+    7400000: Default Take
+    7400002: Fire
+    9500000: //RootNode
+    13700000: Barrel
+    13700002: Bow
+    13700004: Cylinder_001
+    13700006: Handle
+    13700008: Hook
+    13700010: Trigger
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

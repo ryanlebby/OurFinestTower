@@ -1,0 +1,192 @@
+fileFormatVersion: 2
+guid: ad931b4f9c4c04d488b641576c0ca800
+timeCreated: 1526126750
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bush
+    100002: Bush_001
+    100004: Bush_002
+    100006: Bush_003
+    100008: Bush_004
+    100010: Bush_005
+    100012: Bush_006
+    100014: Bush_007
+    100016: Bush_008
+    100018: FlowerYellow_000
+    100020: FlowerYellow_001
+    100022: FlowerYellow_002
+    100024: FlowerYellow_003
+    100026: FlowerYellow_004
+    100028: FlowerYellow_005
+    100030: FlowerYellow_006
+    100032: FlowerYellow_007
+    100034: FlowerYellow_008
+    100036: FlowerYellow_013
+    100038: //RootNode
+    100040: Top
+    400000: Bush
+    400002: Bush_001
+    400004: Bush_002
+    400006: Bush_003
+    400008: Bush_004
+    400010: Bush_005
+    400012: Bush_006
+    400014: Bush_007
+    400016: Bush_008
+    400018: FlowerYellow_000
+    400020: FlowerYellow_001
+    400022: FlowerYellow_002
+    400024: FlowerYellow_003
+    400026: FlowerYellow_004
+    400028: FlowerYellow_005
+    400030: FlowerYellow_006
+    400032: FlowerYellow_007
+    400034: FlowerYellow_008
+    400036: FlowerYellow_013
+    400038: //RootNode
+    400040: Top
+    2100000: HEX_Base_Grass
+    2300000: Bush
+    2300002: Bush_001
+    2300004: Bush_002
+    2300006: Bush_003
+    2300008: Bush_004
+    2300010: Bush_005
+    2300012: Bush_006
+    2300014: Bush_007
+    2300016: Bush_008
+    2300018: FlowerYellow_000
+    2300020: FlowerYellow_001
+    2300022: FlowerYellow_002
+    2300024: FlowerYellow_003
+    2300026: FlowerYellow_004
+    2300028: FlowerYellow_005
+    2300030: FlowerYellow_006
+    2300032: FlowerYellow_007
+    2300034: FlowerYellow_008
+    2300036: FlowerYellow_013
+    2300038: Top
+    3300000: Bush
+    3300002: Bush_001
+    3300004: Bush_002
+    3300006: Bush_003
+    3300008: Bush_004
+    3300010: Bush_005
+    3300012: Bush_006
+    3300014: Bush_007
+    3300016: Bush_008
+    3300018: FlowerYellow_000
+    3300020: FlowerYellow_001
+    3300022: FlowerYellow_002
+    3300024: FlowerYellow_003
+    3300026: FlowerYellow_004
+    3300028: FlowerYellow_005
+    3300030: FlowerYellow_006
+    3300032: FlowerYellow_007
+    3300034: FlowerYellow_008
+    3300036: FlowerYellow_013
+    3300038: Top
+    4300000: FlowerYellow_008
+    4300002: Top
+    4300004: Bush_008
+    4300006: FlowerYellow_007
+    4300008: FlowerYellow_006
+    4300010: FlowerYellow_005
+    4300012: FlowerYellow_004
+    4300014: FlowerYellow_002
+    4300016: FlowerYellow_001
+    4300018: FlowerYellow_003
+    4300020: FlowerYellow_000
+    4300022: FlowerYellow_013
+    4300024: Bush_007
+    4300026: Bush_006
+    4300028: Bush_005
+    4300030: Bush_004
+    4300032: Bush_003
+    4300034: Bush_002
+    4300036: Bush_001
+    4300038: Bush
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
