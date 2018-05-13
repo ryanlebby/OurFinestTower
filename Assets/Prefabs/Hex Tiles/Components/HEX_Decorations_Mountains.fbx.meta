@@ -18,12 +18,15 @@ ModelImporter:
     2300000: FlowerYellow.000
     2300002: Icosphere
     2300004: Top
+    2300006: //RootNode
     3300000: FlowerYellow.000
     3300002: Icosphere
     3300004: Top
+    3300006: //RootNode
     4300000: Icosphere
     4300002: Top
     4300004: FlowerYellow.000
+    4300006: Mountains
   externalObjects:
   - first:
       type: UnityEngine:Material

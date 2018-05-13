@@ -68,6 +68,7 @@ ModelImporter:
     2300034: FlowerYellow.008
     2300036: FlowerYellow.013
     2300038: Top
+    2300040: //RootNode
     3300000: Bush
     3300002: Bush.001
     3300004: Bush.002
@@ -88,6 +89,7 @@ ModelImporter:
     3300034: FlowerYellow.008
     3300036: FlowerYellow.013
     3300038: Top
+    3300040: //RootNode
     4300000: FlowerYellow.008
     4300002: Top
     4300004: Bush.008

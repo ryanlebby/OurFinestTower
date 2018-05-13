@@ -23,6 +23,17 @@ ModelImporter:
     100030: Cube.014
     100032: FlowerYellow.000
     100034: Top
+    100036: Pillar 1
+    100038: Pillar 2
+    100040: Pillar 3
+    100042: Pillar 4
+    100044: Pillar 5
+    100046: Pillar 6
+    100048: Road 1
+    100050: Road 2
+    100052: Road 3
+    100054: Road 4
+    100056: Road 5
     400000: //RootNode
     400002: Cube.000
     400004: Cube.001
@@ -41,6 +52,17 @@ ModelImporter:
     400030: Cube.014
     400032: FlowerYellow.000
     400034: Top
+    400036: Pillar 1
+    400038: Pillar 2
+    400040: Pillar 3
+    400042: Pillar 4
+    400044: Pillar 5
+    400046: Pillar 6
+    400048: Road 1
+    400050: Road 2
+    400052: Road 3
+    400054: Road 4
+    400056: Road 5
     2100000: RoadSegment
     2100002: HEX_Base_Grass
     2300000: //RootNode
@@ -61,6 +83,17 @@ ModelImporter:
     2300030: Cube.014
     2300032: FlowerYellow.000
     2300034: Top
+    2300036: Pillar 1
+    2300038: Pillar 2
+    2300040: Pillar 3
+    2300042: Pillar 4
+    2300044: Pillar 5
+    2300046: Pillar 6
+    2300048: Road 1
+    2300050: Road 2
+    2300052: Road 3
+    2300054: Road 4
+    2300056: Road 5
     3300000: //RootNode
     3300002: Cube.000
     3300004: Cube.001
@@ -79,6 +112,17 @@ ModelImporter:
     3300030: Cube.014
     3300032: FlowerYellow.000
     3300034: Top
+    3300036: Pillar 1
+    3300038: Pillar 2
+    3300040: Pillar 3
+    3300042: Pillar 4
+    3300044: Pillar 5
+    3300046: Pillar 6
+    3300048: Road 1
+    3300050: Road 2
+    3300052: Road 3
+    3300054: Road 4
+    3300056: Road 5
     4300000: Cube
     4300002: Cube.002
     4300004: Cube.014
@@ -97,6 +141,17 @@ ModelImporter:
     4300030: Cube.010
     4300032: Top
     4300034: FlowerYellow.000
+    4300036: Pillar 1
+    4300038: Pillar 4
+    4300040: Road 1
+    4300042: Road 2
+    4300044: Pillar 2
+    4300046: Pillar 5
+    4300048: Road 3
+    4300050: Road 4
+    4300052: Pillar 3
+    4300054: Pillar 6
+    4300056: Road 5
   externalObjects:
   - first:
       type: UnityEngine:Material

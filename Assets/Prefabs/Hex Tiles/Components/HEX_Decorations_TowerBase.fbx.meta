@@ -17,6 +17,10 @@ ModelImporter:
     100018: Torus.003
     100020: Torus.004
     100022: Torus.005
+    100024: Main Platform
+    100026: Ring 1
+    100028: Ring 2
+    100030: Ring 3
     400000: Cylinder
     400002: //RootNode
     400004: Top
@@ -29,6 +33,10 @@ ModelImporter:
     400018: Torus.003
     400020: Torus.004
     400022: Torus.005
+    400024: Main Platform
+    400026: Ring 1
+    400028: Ring 2
+    400030: Ring 3
     2100000: TowerBase_Rings
     2100002: TowerBase
     2100004: HEX_Decorations_TowerBase
@@ -44,6 +52,10 @@ ModelImporter:
     2300018: Torus.003
     2300020: Torus.004
     2300022: Torus.005
+    2300024: Main Platform
+    2300026: Ring 1
+    2300028: Ring 2
+    2300030: Ring 3
     3300000: Cylinder
     3300002: Top
     3300004: Torus
@@ -56,6 +68,10 @@ ModelImporter:
     3300018: Torus.003
     3300020: Torus.004
     3300022: Torus.005
+    3300024: Main Platform
+    3300026: Ring 1
+    3300028: Ring 2
+    3300030: Ring 3
     4300000: Torus.002
     4300002: Torus.001
     4300004: Torus
@@ -67,6 +83,10 @@ ModelImporter:
     4300016: Torus.004
     4300018: Torus.003
     4300020: Base.001
+    4300022: Ring 3
+    4300024: Ring 2
+    4300026: Ring 1
+    4300028: Main Platform
   externalObjects:
   - first:
       type: UnityEngine:Material

@@ -11,32 +11,64 @@ ModelImporter:
     100006: Cylinder
     100008: //RootNode
     100010: Tower
+    100012: Castle Roof
+    100014: Tower Roof
+    100016: Door
+    100018: Flag
+    100020: Flagpole
+    100022: Towers
     400000: Castle
     400002: Cube
     400004: Cube.001
     400006: Cylinder
     400008: //RootNode
     400010: Tower
+    400012: Castle Roof
+    400014: Tower Roof
+    400016: Door
+    400018: Flag
+    400020: Flagpole
+    400022: Towers
     2100000: Flag
     2100002: Door
     2100004: Post
     2100006: No Name
     2100008: Walls
+    2100010: Roof
+    2100012: Flagpole
     2300000: Castle
     2300002: Cube
     2300004: Cube.001
     2300006: Cylinder
     2300008: Tower
+    2300010: Castle Roof
+    2300012: Tower Roof
+    2300014: Door
+    2300016: Flag
+    2300018: Flagpole
+    2300020: Towers
     3300000: Castle
     3300002: Cube
     3300004: Cube.001
     3300006: Cylinder
     3300008: Tower
+    3300010: Castle Roof
+    3300012: Tower Roof
+    3300014: Door
+    3300016: Flag
+    3300018: Flagpole
+    3300020: Towers
     4300000: Cube.001
     4300002: Cube
     4300004: Cylinder
     4300006: Tower
     4300008: Castle
+    4300010: Tower Roof
+    4300012: Castle Roof
+    4300014: Flag
+    4300016: Door
+    4300018: Flagpole
+    4300020: Towers
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -51,6 +83,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Flagpole
+    second: {fileID: 2100000, guid: eaa317785290fb340bd89bbafe7962ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: No Name
     second: {fileID: 2100000, guid: 81a4a721377085b45bee4adb8dd78bdd, type: 2}
   - first:
@@ -61,8 +98,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Walls
+      name: Roof
     second: {fileID: 2100000, guid: 81a4a721377085b45bee4adb8dd78bdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls
+    second: {fileID: 2100000, guid: 0ff3f388793e27c44bbed0f337f1a15e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
