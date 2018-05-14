@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DarkMatter : Projectile
 {
+    public GameObject Core;
     public float SpawnGrowthSpeed = 0.075f;    
     public float DetonateTimer = 2.0f;
     public float DetonateGrowthSpeed = 0.075f;
@@ -13,7 +14,9 @@ public class DarkMatter : Projectile
     public bool IsDetonating { get; set; }
     public bool IsSpawning { get; set; }
 
-    private Vector3 initialSize;  
+    private Vector3 initialSize;
+    private Renderer coreRenderer;
+    private Color initialCoreColor;
     private float timer;
 
     // Use this for initialization
@@ -21,6 +24,8 @@ public class DarkMatter : Projectile
     {
         base.Start();
         initialSize = transform.localScale;
+        coreRenderer = Core.GetComponent<Renderer>();
+        initialCoreColor = coreRenderer.material.color;
         Spawn();
     }
 
@@ -47,6 +52,10 @@ public class DarkMatter : Projectile
             {
                 timer -= DetonateTimer * Time.deltaTime;
                 transform.localScale += Vector3.one * DetonateGrowthSpeed;
+                coreRenderer.material.color = Color.Lerp(
+                    coreRenderer.material.color,
+                    Color.red,
+                    1.0f - timer / DetonateGrowthSpeed);
             }
             
             else
@@ -61,6 +70,7 @@ public class DarkMatter : Projectile
 
                 IsDetonating = false;
                 transform.localScale = initialSize;
+                coreRenderer.material.color = initialCoreColor;
                 gameObject.SetActive(false);
             }
         }

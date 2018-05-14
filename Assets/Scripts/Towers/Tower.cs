@@ -29,7 +29,8 @@ public class Tower : MonoBehaviour {
         LoadedProjectile = null;
 
         var collider = this.GetComponent<SphereCollider>();
-        collider.radius = Range;        
+        collider.radius = Range;
+        StartCoroutine("WaitForAttackCooldown");
     }
 
     // COLLISION - ENTER

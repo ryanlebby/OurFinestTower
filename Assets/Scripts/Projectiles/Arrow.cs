@@ -8,17 +8,20 @@ public class Arrow : Projectile
     public bool SelfDestructMode { get; set; }
 
     private float timer;
+    private Vector3 originalScale;
+    private Vector3 scaleDuringSelfDestruct;
 
     new void Start()
     {
         base.Start();
-        SelfDestructMode = false;        
+        SelfDestructMode = false;
+        originalScale = transform.localScale;
     }
 
     void Update () {
 
         if (SelfDestructMode)
-        {
+        {            
             if (timer > 0)
             {
                 ValidateTarget();
@@ -27,14 +30,18 @@ public class Arrow : Projectile
                     timer = 0;
                 else
                     timer -= Time.deltaTime;
+
+                transform.localScale = scaleDuringSelfDestruct;
             }
 
             else
             {
                 SelfDestructMode = false;
                 this.transform.parent = Origin.transform;
+                transform.localScale = originalScale;
                 this.gameObject.SetActive(false);
-            }            
+            }
+
         }           
 
         if (IsFired)
@@ -70,12 +77,14 @@ public class Arrow : Projectile
     {
         if (other.transform == Target)
         {
-            Target.GetComponent<Unit>().TakeDamage(AttackPower);            
+            Target.GetComponent<Unit>().TakeDamage(AttackPower);
+            SelfDestruct();
 
             if (Target.gameObject.activeSelf)
-                this.transform.parent = Target;
-
-            SelfDestruct();
+            {
+                transform.parent = Target;
+                scaleDuringSelfDestruct = transform.localScale;
+            }                            
         }
     }
 
@@ -83,5 +92,6 @@ public class Arrow : Projectile
     {
         base.Reset();
         SelfDestructMode = false;
+        transform.localScale = originalScale;
     }
 }
