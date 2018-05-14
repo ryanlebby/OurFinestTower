@@ -1584,6 +1584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23487fb7931a8ae4c8759f9869c861f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Ballista
   AttackPower: 4
   AttackSpeed: 1.5
   Range: 12

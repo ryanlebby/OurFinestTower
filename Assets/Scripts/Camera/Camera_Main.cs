@@ -5,10 +5,10 @@ using UnityEngine;
 public class Camera_Main : MonoBehaviour {
 
     public float scrollSpeed = 1f;
+    public float rayDistance = 250f;
 
     Vector3 groundCamOffset;
     Vector3 camTarget;
-    Vector3 camSmoothDampV;
 
     private Vector3 prevRaycastHit = Vector3.zero;
     private bool camMoving = false;
@@ -23,28 +23,33 @@ public class Camera_Main : MonoBehaviour {
 
     void Update()
     {
-        // Initial click to grab the camera
-        if (Input.GetMouseButtonDown(0))
+        
+
+        
+
+        
+
+        if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             LayerMask cameraRaycasts = 1 << LayerMask.NameToLayer("CameraRaycasts");
 
-            if (Physics.Raycast(ray, out hit, 50f, cameraRaycasts))
+            if (Physics.Raycast(ray, out hit, rayDistance, cameraRaycasts))
             {
                 prevRaycastHit = hit.point;
                 camMoving = true;
-            } 
+            }
         }
 
         // While dragging the camera around
-        else if (Input.GetMouseButton(0) && camMoving)
+        else if (Input.GetMouseButton(1) && camMoving)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             LayerMask cameraRaycasts = 1 << LayerMask.NameToLayer("CameraRaycasts");
 
-            if (Physics.Raycast(ray, out hit, 50f, cameraRaycasts))
+            if (Physics.Raycast(ray, out hit, rayDistance, cameraRaycasts))
             {
                 var mousePosition = hit.point;
                 var movement = prevRaycastHit - mousePosition;
@@ -53,22 +58,22 @@ public class Camera_Main : MonoBehaviour {
         }
 
         // Stop dragging camera
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(1))
         {
             camMoving = false;
         }
 
         // Center whatever position is right-clicked
-        if (Input.GetMouseButtonDown(1))
-        {            
-            float mouseX = Input.mousePosition.x / Camera.main.pixelWidth;
-            float mouseY = Input.mousePosition.y / Camera.main.pixelHeight;
+        //if (Input.GetMouseButtonDown(1))
+        //{            
+        //    float mouseX = Input.mousePosition.x / Camera.main.pixelWidth;
+        //    float mouseY = Input.mousePosition.y / Camera.main.pixelHeight;
 
-            Vector3 clickPt = GetWorldPosAtViewportPoint(mouseX, mouseY);
-            camTarget = clickPt + groundCamOffset;
+        //    Vector3 clickPt = GetWorldPosAtViewportPoint(mouseX, mouseY);
+        //    camTarget = clickPt + groundCamOffset;
 
-            Camera.main.transform.position = camTarget;
-        }        
+        //    Camera.main.transform.position = camTarget;
+        //}        
 
         // Zoom with scrollwheel
         float scroll = Input.GetAxis("Mouse ScrollWheel");

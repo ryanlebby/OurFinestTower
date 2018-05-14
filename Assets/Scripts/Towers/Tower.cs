@@ -6,6 +6,7 @@ using UnityEngine;
 // This will be the base class for all towers (I think).
 // Some towers might work so differently that we'll need to revise.
 public class Tower : MonoBehaviour {
+    public string name;
     public float AttackPower;
     public float AttackSpeed;
     public float Range;
