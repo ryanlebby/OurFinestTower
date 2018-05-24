@@ -12,20 +12,21 @@ public class Tower : MonoBehaviour {
     public float Range;
     public GameObject ProjectilePrefab;
     public Transform ProjectileSpawnPoint;
-
-    public Transform Target { get; set; }
+    
+    public Unit TargetedEnemy { get; set; }
     public Projectile LoadedProjectile { get; set; }    
     public List<Unit> UnitsInRange { get; set; }
-    public ObjectPool ProjectilePool { get; set; }
+    public PoolList ProjectilePool { get; set; }
     public bool OnCooldown { get; set; }
 
     // START
     public void Start()
     {
         UnitsInRange = new List<Unit>();
-        ProjectilePool = new ObjectPool();
+        ProjectilePool = new PoolList();
         OnCooldown = false;
-        Target = null;
+
+        TargetedEnemy = null;
         LoadedProjectile = null;
 
         var collider = this.GetComponent<SphereCollider>();
@@ -63,11 +64,11 @@ public class Tower : MonoBehaviour {
     // of range, Target = null.
     public void ValidateTarget()
     {
-        if (Target != null)
+        if (TargetedEnemy != null)
         {
-            if (!Target.gameObject.activeSelf || Vector3.Distance(transform.position, Target.position) >= Range)
+            if (!TargetedEnemy.gameObject.activeSelf || Vector3.Distance(transform.position, TargetedEnemy.transform.position) >= Range)
             {
-                Target = null;
+                TargetedEnemy = null;
             }
         }        
     }
@@ -78,7 +79,7 @@ public class Tower : MonoBehaviour {
         RefreshUnitsInRange();
         
         if (UnitsInRange.Count == 0)
-            Target = null;
+            TargetedEnemy = null;
 
         else
         {
@@ -88,7 +89,7 @@ public class Tower : MonoBehaviour {
                 .OrderBy(u => Vector3.Distance(transform.position, u.transform.position))
                 .FirstOrDefault();
 
-            Target = nearestUnit.transform;
+            TargetedEnemy = nearestUnit;
         }        
     }
 

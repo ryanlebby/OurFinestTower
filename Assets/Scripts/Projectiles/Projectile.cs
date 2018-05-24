@@ -10,14 +10,7 @@ public class Projectile : MonoBehaviour {
 
     public bool IsFired { get; set; }
 
-    public Transform TargetedUnit { get; set; }
-    public Vector3 ProjectileTarget
-    {
-        get
-        {
-            return TargetedUnit.gameObject.GetComponent<Unit>().ProjectileTarget.position;
-        }
-    }
+    public Unit TargetedUnit { get; set; }
     public Transform Origin { get; set; }
 
     public void Start()
@@ -33,7 +26,7 @@ public class Projectile : MonoBehaviour {
     {
         if (TargetedUnit != null)
         {
-            if (!TargetedUnit.gameObject.activeSelf || Vector3.Distance(Origin.position, ProjectileTarget) >= Range)
+            if (!TargetedUnit.gameObject.activeSelf || Vector3.Distance(Origin.position, TargetedUnit.ProjectileContactPoint.position) >= Range)
             {
                 TargetedUnit = null;
             }
@@ -45,12 +38,12 @@ public class Projectile : MonoBehaviour {
 
         transform.position = Vector3.MoveTowards(
                     transform.position,
-                    ProjectileTarget,
+                    TargetedUnit.ProjectileContactPoint.position,
                     Velocity * Time.deltaTime
                 );
     }
 
-    public void Fire(Transform target, Transform origin)
+    public void Fire(Unit target, Transform origin)
     {
         TargetedUnit = target;
         Origin = origin;

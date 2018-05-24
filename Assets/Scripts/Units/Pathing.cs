@@ -9,7 +9,6 @@ public class Pathing : MonoBehaviour {
     private bool noTarget = true;
     private Unit unit;
     private Vector3 SpawnLocation;
-    private Vector3 SpawnRotation;
     private UnitPath Path;
 
     void Start()

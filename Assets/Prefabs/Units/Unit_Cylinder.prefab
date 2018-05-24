@@ -268,11 +268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a527c970a7acc49ac9282cb46af281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Cylinder
   MoveSpeed: 2
+  BaseAnimatorSpeed: 4.5
   MaxHealth: 200
   YOffset: 2
   Rarity: 100
-  ProjectileTarget: {fileID: 4186060736638868}
+  ProjectileContactPoint: {fileID: 0}
   HealthBar: {fileID: 114280897311183430}
 --- !u!114 &114836924823723930
 MonoBehaviour:

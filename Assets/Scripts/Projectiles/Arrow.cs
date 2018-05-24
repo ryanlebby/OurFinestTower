@@ -56,7 +56,7 @@ public class Arrow : Projectile
 
             else
             {
-                transform.LookAt(ProjectileTarget);
+                transform.LookAt(TargetedUnit.ProjectileContactPoint);
                 MoveTowardTarget();
             }
         }        
@@ -71,14 +71,14 @@ public class Arrow : Projectile
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform == TargetedUnit)
+        if (other.transform == TargetedUnit.transform)
         {
             TargetedUnit.GetComponent<Unit>().TakeDamage(AttackPower);
             SelfDestruct();
 
             if (TargetedUnit.gameObject.activeSelf)
             {
-                transform.parent = TargetedUnit;
+                transform.parent = TargetedUnit.transform;
                 scaleDuringSelfDestruct = transform.localScale;
             }                            
         }

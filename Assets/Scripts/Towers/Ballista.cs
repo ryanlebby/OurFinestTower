@@ -21,22 +21,22 @@ public class Ballista : Tower
             LoadProjectile();
         }
 
-        if (Target != null)
+        if (TargetedEnemy != null)
         {
-            transform.LookAt(Target.transform);
+            transform.LookAt(TargetedEnemy.ProjectileContactPoint);
             if (LoadedProjectile != null)
                 LoadedProjectile.transform.rotation = transform.rotation;
         }
 
         if (!OnCooldown)
         {
-            if (Target == null)
+            if (TargetedEnemy == null)
                 AcquireTarget();
 
-            if (Target != null)
+            if (TargetedEnemy != null)
             {
                 anim.Play("Fire");
-                LoadedProjectile.Fire(Target, ProjectileSpawnPoint);
+                LoadedProjectile.Fire(TargetedEnemy, ProjectileSpawnPoint);
                 LoadedProjectile.Origin = this.transform;
                 LoadedProjectile = null;
                 StartCoroutine("WaitForAttackCooldown");

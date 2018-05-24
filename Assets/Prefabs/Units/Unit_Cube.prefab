@@ -233,11 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a527c970a7acc49ac9282cb46af281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Cube
   MoveSpeed: 4
+  BaseAnimatorSpeed: 4.5
   MaxHealth: 100
   YOffset: 2
   Rarity: 100
-  ProjectileTarget: {fileID: 4288259401073596}
+  ProjectileContactPoint: {fileID: 0}
   HealthBar: {fileID: 114861281409132502}
 --- !u!114 &114861281409132502
 MonoBehaviour:

@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
 
+    public string Name;
     public float MoveSpeed = 6f;
+    public float BaseAnimatorSpeed = 4.5f;
     public float MaxHealth = 20f;    
     public float YOffset = 0;
     public int Rarity = 100;
-    public Transform ProjectileTarget;
+    public Transform ProjectileContactPoint;
     public Image HealthBar;
 
     public float Health { get; set; }
@@ -18,6 +20,7 @@ public class Unit : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Health = MaxHealth;
+        GetComponent<Animator>().speed = MoveSpeed / BaseAnimatorSpeed;
         transform.position += new Vector3(0, 1, 0) * YOffset;
     }
 

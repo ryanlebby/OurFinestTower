@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class UnitSpawner : MonoBehaviour {
 
-    public List<GameObject> UnitPrefabs = new List<GameObject>();
-    public float MinSpawnRate = 2.5f;
-    public float MaxSpawnRate = 0.2f;
+    public float MinSpawnTimer = 0.5f;
+    public float MaxSpawnTimer = 2.5f;
+    public List<GameObject> UnitPrefabs = new List<GameObject>();    
 
-    private ObjectPool UnitPool = new ObjectPool();
+    private UnitPool UnitPool = new UnitPool();
     private float SpawnTimer;
 
     private void Update()
@@ -25,46 +25,68 @@ public class UnitSpawner : MonoBehaviour {
 
     public void ResetTimer()
     {
-        SpawnTimer = Random.Range(MaxSpawnRate, MinSpawnRate);
+        SpawnTimer = Random.Range(MinSpawnTimer, MaxSpawnTimer);
     }
 
-    public void SpawnUnit()
+    // True = store units in UnitPool for re-use
+    // False = always create a new instance. Use ONLY IN TESTING!
+    public void SpawnUnit(bool enableUnitPooling = true)
     {
-        GameObject go = Instantiate(RandomPrefab(), transform.position, Quaternion.identity);
-        go.transform.parent = this.transform;
+        GameObject unitGO;
+        var unitName = RandomUnitName();
 
-        //GameObject go = UnitPool.GetNextAvailable();
+        if (enableUnitPooling)
+        {            
+            unitGO = UnitPool.GetByName(unitName);
 
-        //if (go != null)
-        //{         
-        //    go.GetComponent<Pathing>().Reset();
-        //    go.GetComponent<Unit>().Reset();
-        //    go.SetActive(true);
-        //}
-        //else
-        //{
-        //    go = Instantiate(RandomPrefab(), transform.position, Quaternion.identity);
-        //    go.transform.parent = this.transform;
-        //    UnitPool.Add(go);           
-        //}
-        
-        GameManager.Instance.ActiveUnits.Add(go.GetComponent<Unit>());
-    }
+            if (unitGO != null)
+            {
+                unitGO.GetComponent<Unit>().Reset();
+                unitGO.GetComponent<Pathing>().Reset();                
+                unitGO.SetActive(true);
+            }
 
-    private GameObject RandomPrefab()
-    {
-        var totalRarity = UnitPrefabs.Sum(u => u.GetComponent<Unit>().Rarity);
-        var random = Random.Range(0, totalRarity);
+            else
+            {
+                var prefab = UnitPrefabs
+                    .Where(u => u.GetComponent<Unit>().Name == unitName)
+                    .SingleOrDefault();
 
-        int curVal = 0;
-        int curIndex = -1;
-
-        while (curVal < random)
-        {
-            curIndex++;
-            curVal += UnitPrefabs[curIndex].GetComponent<Unit>().Rarity;            
+                unitGO = Instantiate(prefab, transform.position, Quaternion.identity);
+                unitGO.transform.parent = this.transform;
+                UnitPool.Add(unitGO);
+            }
         }
 
-        return UnitPrefabs[curIndex];
+        else
+        {
+            var prefab = UnitPrefabs
+                    .Where(u => u.GetComponent<Unit>().Name == unitName)
+                    .SingleOrDefault();
+
+            unitGO = Instantiate(prefab, transform.position, Quaternion.identity);
+            unitGO.transform.parent = this.transform;
+        }
+
+        GameManager.Instance.ActiveUnits.Add(unitGO.GetComponent<Unit>());
+    }
+
+    private string RandomUnitName()
+    {
+        var totalRarity = UnitPrefabs.Sum(u => u.GetComponent<Unit>().Rarity);
+        var rarityThreshold = Random.Range(0, totalRarity);
+
+        int curRarityCount = 0;
+        int curIndex = -1;
+        Unit curUnit = null;
+
+        while (curRarityCount < rarityThreshold)
+        {
+            curIndex++;
+            curUnit = UnitPrefabs[curIndex].GetComponent<Unit>();
+            curRarityCount += curUnit.Rarity;            
+        }
+
+        return curUnit.Name;
     }
 }

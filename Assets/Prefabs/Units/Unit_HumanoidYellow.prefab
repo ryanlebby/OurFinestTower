@@ -1283,11 +1283,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a527c970a7acc49ac9282cb46af281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
+  Name: HumanoidYellow
+  MoveSpeed: 3
+  BaseAnimatorSpeed: 4.5
   MaxHealth: 50
   YOffset: 1
   Rarity: 200
-  ProjectileTarget: {fileID: 4142527999011324}
+  ProjectileContactPoint: {fileID: 4142527999011324}
   HealthBar: {fileID: 114667176665267084}
 --- !u!114 &114601702147807922
 MonoBehaviour:

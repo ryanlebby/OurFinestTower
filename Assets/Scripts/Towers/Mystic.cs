@@ -17,15 +17,15 @@ public class Mystic : Tower
         {
             ValidateTarget();
             // If no target, search for one.
-            if (Target == null)
+            if (TargetedEnemy == null)
             {
                 AcquireTarget();
             }                
 
             // If target exists, fire.
-            if (Target != null)
+            if (TargetedEnemy != null)
             {
-                LoadedProjectile.Fire(Target, ProjectileSpawnPoint);
+                LoadedProjectile.Fire(TargetedEnemy, ProjectileSpawnPoint);
                 LoadedProjectile = null;
                 StartCoroutine("WaitForAttackCooldown");
             }

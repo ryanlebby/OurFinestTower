@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public Unit[] units;
     public List<Unit> ActiveUnits = new List<Unit>();
     public List<UnitPath> Paths;
     public List<GameObject> Prefabs_Towers;

@@ -62,7 +62,7 @@ public class DarkMatter : Projectile
             {
                 foreach (var unit in GameManager.Instance.ActiveUnits)
                 {
-                    if (Vector3.Distance(transform.position, unit.ProjectileTarget.position) <= DetonateRange)
+                    if (Vector3.Distance(transform.position, unit.ProjectileContactPoint.position) <= DetonateRange)
                     {
                         unit.TakeDamage(AttackPower * DetonateDmgMultiplier);
                     }
@@ -88,7 +88,7 @@ public class DarkMatter : Projectile
 
             // If projectile has not reached target,
             // keep moving towards the target
-            else if (transform.position != TargetedUnit.position)
+            else if (transform.position != TargetedUnit.transform.position)
             {
                 MoveTowardTarget();
             }
@@ -105,9 +105,9 @@ public class DarkMatter : Projectile
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform == TargetedUnit && !IsDetonating)
+        if (other.transform == TargetedUnit.transform && !IsDetonating)
         {
-            TargetedUnit.GetComponent<Unit>().TakeDamage(AttackPower);
+            TargetedUnit.TakeDamage(AttackPower);
             TargetedUnit = null;
             IsFired = false;
             Detonate();
