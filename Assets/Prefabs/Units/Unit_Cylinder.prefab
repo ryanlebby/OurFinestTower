@@ -92,7 +92,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296498384366944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.25, y: 2, z: -14.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_Children:
   - {fileID: 224921011168520156}
@@ -154,7 +154,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &114056726573523340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -270,6 +270,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 2
   MaxHealth: 200
+  YOffset: 2
+  Rarity: 100
+  ProjectileTarget: {fileID: 4186060736638868}
   HealthBar: {fileID: 114280897311183430}
 --- !u!114 &114836924823723930
 MonoBehaviour:
@@ -282,7 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0a8d8a086f5f248b231fb7fb4e790d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: {fileID: 0}
 --- !u!136 &136612150724338154
 CapsuleCollider:
   m_ObjectHideFlags: 1

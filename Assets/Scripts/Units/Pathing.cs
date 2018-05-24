@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pathing : MonoBehaviour {
-
-    public UnitPath Path;
-
+    
     private int curIndex = 0;
-    private Transform target = null;
+    private Vector3 target;
+    private bool noTarget = true;
     private Unit unit;
+    private Vector3 SpawnLocation;
+    private Vector3 SpawnRotation;
+    private UnitPath Path;
 
     void Start()
     {
-        unit = GetComponent<Unit>();
         Path = GameManager.Instance.GetUnitPath();
-        transform.position = Path.At(0).transform.position;
+
+        unit = GetComponent<Unit>();
+        SpawnLocation = PositionClampY(Path.At(0));       
     }
 
     // Update is called once per frame
@@ -23,8 +26,12 @@ public class Pathing : MonoBehaviour {
         // If unit has not reached the end and is still active
         if (curIndex < Path.Length && this.gameObject.activeSelf)
         {
-            if (target == null)
-                target = Path.At(curIndex).transform;
+            if (noTarget)
+            {
+                var pathNode = Path.At(curIndex);
+                target = PositionClampY(pathNode);
+                noTarget = false;
+            }
 
             Walk();
         }
@@ -42,7 +49,7 @@ public class Pathing : MonoBehaviour {
         // Rotate towards the target
         transform.forward = Vector3.RotateTowards(
             transform.forward, 
-            target.position - transform.position, 
+            target - transform.position, 
             unit.MoveSpeed * Time.deltaTime, 
             0.0f
         );
@@ -50,24 +57,37 @@ public class Pathing : MonoBehaviour {
         // Move towards the target
         transform.position = Vector3.MoveTowards(
             transform.position, 
-            target.position, 
+            target, 
             unit.MoveSpeed * Time.deltaTime
         );
 
         // If current target has been reached
-        if (transform.position == target.position)
+        if (transform.position == target)
         {
             curIndex++;
 
             if (curIndex < Path.Length)
-                target = Path.At(curIndex).transform;
+            {
+                var pathNode = Path.At(curIndex);
+                target = PositionClampY(pathNode);
+            }                
         }
     }
 
     public void Reset()
     {
         curIndex = 0;
-        target = null;        
-        transform.position = Path.At(0).transform.position;
+        target = Vector3.zero;
+        noTarget = true;
+        transform.position = PositionClampY(Path.At(0));
+    }
+
+    private Vector3 PositionClampY(Transform transform)
+    {
+        return new Vector3(
+            transform.position.x,
+            unit.YOffset,
+            transform.position.z
+            );
     }
 }

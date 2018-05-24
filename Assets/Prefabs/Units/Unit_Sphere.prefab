@@ -154,7 +154,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &114079927681195374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,7 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0a8d8a086f5f248b231fb7fb4e790d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: {fileID: 0}
 --- !u!114 &114693367118218974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,6 +243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 8
   MaxHealth: 45
+  YOffset: 2
+  Rarity: 100
+  ProjectileTarget: {fileID: 4152587616049436}
   HealthBar: {fileID: 114877597096176572}
 --- !u!114 &114852880048749978
 MonoBehaviour:

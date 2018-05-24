@@ -54,11 +54,9 @@ public class Tower : MonoBehaviour {
     // Remove inactive or null units from list.
     public void RefreshUnitsInRange()
     {
-        foreach (var unit in UnitsInRange)
-        {
-            if (unit == null || !unit.gameObject.activeSelf)
-                UnitsInRange.Remove(unit);
-        }
+        UnitsInRange = GameManager.Instance.ActiveUnits
+            .Where(u => u.gameObject.activeSelf && Vector3.Distance(transform.position, u.transform.position) <= Range)
+            .ToList();
     }
 
     // If Target is no longer active or is out 
@@ -86,8 +84,9 @@ public class Tower : MonoBehaviour {
         {
             // Order by distance from tower and take the first entry
             var nearestUnit = UnitsInRange
-            .OrderBy(u => Vector3.Distance(transform.position, u.transform.position))
-            .FirstOrDefault();
+                .Where(u => u.gameObject.activeSelf)
+                .OrderBy(u => Vector3.Distance(transform.position, u.transform.position))
+                .FirstOrDefault();
 
             Target = nearestUnit.transform;
         }        

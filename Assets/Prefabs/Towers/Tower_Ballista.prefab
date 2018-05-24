@@ -1512,8 +1512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Ballista
-  AttackPower: 4
-  AttackSpeed: 1.5
+  AttackPower: 12
+  AttackSpeed: 1.2
   Range: 12
   ProjectilePrefab: {fileID: 1001540677827668, guid: c3130f880f64cb242bfa3f37e7ef523e,
     type: 2}

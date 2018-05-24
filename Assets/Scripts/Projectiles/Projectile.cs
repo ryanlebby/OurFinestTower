@@ -10,12 +10,19 @@ public class Projectile : MonoBehaviour {
 
     public bool IsFired { get; set; }
 
-    public Transform Target { get; set; }
+    public Transform TargetedUnit { get; set; }
+    public Vector3 ProjectileTarget
+    {
+        get
+        {
+            return TargetedUnit.gameObject.GetComponent<Unit>().ProjectileTarget.position;
+        }
+    }
     public Transform Origin { get; set; }
 
     public void Start()
     {
-        Target = null;
+        TargetedUnit = null;
         Origin = null;
         IsFired = false;
     }
@@ -24,18 +31,28 @@ public class Projectile : MonoBehaviour {
     // of range, Target = null.
     public void ValidateTarget()
     {
-        if (Target != null)
+        if (TargetedUnit != null)
         {
-            if (!Target.gameObject.activeSelf || Vector3.Distance(Origin.position, Target.position) >= Range)
+            if (!TargetedUnit.gameObject.activeSelf || Vector3.Distance(Origin.position, ProjectileTarget) >= Range)
             {
-                Target = null;
+                TargetedUnit = null;
             }
         }
     }
 
+    public void MoveTowardTarget()
+    {
+
+        transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    ProjectileTarget,
+                    Velocity * Time.deltaTime
+                );
+    }
+
     public void Fire(Transform target, Transform origin)
     {
-        Target = target;
+        TargetedUnit = target;
         Origin = origin;
         IsFired = true;
     }
@@ -43,7 +60,7 @@ public class Projectile : MonoBehaviour {
     public virtual void Reset()
     {
         IsFired = false;
-        Target = null;
+        TargetedUnit = null;
         Origin = null;
     }
 

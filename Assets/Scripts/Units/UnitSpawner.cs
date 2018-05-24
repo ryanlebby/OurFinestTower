@@ -30,22 +30,41 @@ public class UnitSpawner : MonoBehaviour {
 
     public void SpawnUnit()
     {
+        GameObject go = Instantiate(RandomPrefab(), transform.position, Quaternion.identity);
+        go.transform.parent = this.transform;
 
-        GameObject go = UnitPool.GetNextAvailable();
+        //GameObject go = UnitPool.GetNextAvailable();
 
-        if (go != null)
-        {         
-            go.GetComponent<Pathing>().Reset();
-            go.GetComponent<Unit>().Reset();
-            go.SetActive(true);
-        }
-        else
-        {
-            go = Instantiate(UnitPrefabs[Random.Range(0, UnitPrefabs.Count)], transform.position + Vector3.up, Quaternion.identity);
-            go.transform.parent = this.transform;
-            UnitPool.Add(go);           
-        }
+        //if (go != null)
+        //{         
+        //    go.GetComponent<Pathing>().Reset();
+        //    go.GetComponent<Unit>().Reset();
+        //    go.SetActive(true);
+        //}
+        //else
+        //{
+        //    go = Instantiate(RandomPrefab(), transform.position, Quaternion.identity);
+        //    go.transform.parent = this.transform;
+        //    UnitPool.Add(go);           
+        //}
         
         GameManager.Instance.ActiveUnits.Add(go.GetComponent<Unit>());
+    }
+
+    private GameObject RandomPrefab()
+    {
+        var totalRarity = UnitPrefabs.Sum(u => u.GetComponent<Unit>().Rarity);
+        var random = Random.Range(0, totalRarity);
+
+        int curVal = 0;
+        int curIndex = -1;
+
+        while (curVal < random)
+        {
+            curIndex++;
+            curVal += UnitPrefabs[curIndex].GetComponent<Unit>().Rarity;            
+        }
+
+        return UnitPrefabs[curIndex];
     }
 }

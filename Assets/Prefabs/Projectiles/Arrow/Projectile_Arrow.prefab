@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackPower: 0
-  Velocity: 25
+  Velocity: 35
   Range: 0
   SelfDestructDuration: 0.8
 --- !u!135 &135591417560503246

@@ -30,7 +30,7 @@ public class DarkMatter : Projectile
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (IsSpawning)
         {
@@ -62,7 +62,7 @@ public class DarkMatter : Projectile
             {
                 foreach (var unit in GameManager.Instance.ActiveUnits)
                 {
-                    if (Vector3.Distance(transform.position, unit.transform.position) <= DetonateRange)
+                    if (Vector3.Distance(transform.position, unit.ProjectileTarget.position) <= DetonateRange)
                     {
                         unit.TakeDamage(AttackPower * DetonateDmgMultiplier);
                     }
@@ -81,20 +81,16 @@ public class DarkMatter : Projectile
             ValidateTarget();
 
             // If no target
-            if (Target == null)
+            if (TargetedUnit == null)
             {
                 gameObject.SetActive(false);
             }
 
             // If projectile has not reached target,
             // keep moving towards the target
-            else if (transform.position != Target.transform.position)
+            else if (transform.position != TargetedUnit.position)
             {
-                transform.position = Vector3.MoveTowards(
-                    transform.position, 
-                    Target.transform.position, 
-                    Velocity * Time.deltaTime
-                );
+                MoveTowardTarget();
             }
         }       
     }
@@ -109,10 +105,10 @@ public class DarkMatter : Projectile
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform == Target && !IsDetonating)
+        if (other.transform == TargetedUnit && !IsDetonating)
         {
-            Target.GetComponent<Unit>().TakeDamage(AttackPower);
-            Target = null;
+            TargetedUnit.GetComponent<Unit>().TakeDamage(AttackPower);
+            TargetedUnit = null;
             IsFired = false;
             Detonate();
         }       

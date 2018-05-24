@@ -18,7 +18,7 @@ public class Arrow : Projectile
         originalScale = transform.localScale;
     }
 
-    void Update () {
+    void FixedUpdate () {
 
         if (SelfDestructMode)
         {            
@@ -26,7 +26,7 @@ public class Arrow : Projectile
             {
                 ValidateTarget();
 
-                if (Target == null)
+                if (TargetedUnit == null)
                     timer = 0;
                 else
                     timer -= Time.deltaTime;
@@ -48,7 +48,7 @@ public class Arrow : Projectile
         {
             ValidateTarget();
 
-            if (Target == null)
+            if (TargetedUnit == null)
             {
                 IsFired = false;
                 this.gameObject.SetActive(false);
@@ -56,12 +56,8 @@ public class Arrow : Projectile
 
             else
             {
-                transform.LookAt(Target.transform);
-
-                if (transform.position != Target.transform.position)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Velocity * Time.deltaTime);
-                }
+                transform.LookAt(ProjectileTarget);
+                MoveTowardTarget();
             }
         }        
 	}
@@ -75,14 +71,14 @@ public class Arrow : Projectile
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform == Target)
+        if (other.transform == TargetedUnit)
         {
-            Target.GetComponent<Unit>().TakeDamage(AttackPower);
+            TargetedUnit.GetComponent<Unit>().TakeDamage(AttackPower);
             SelfDestruct();
 
-            if (Target.gameObject.activeSelf)
+            if (TargetedUnit.gameObject.activeSelf)
             {
-                transform.parent = Target;
+                transform.parent = TargetedUnit;
                 scaleDuringSelfDestruct = transform.localScale;
             }                            
         }

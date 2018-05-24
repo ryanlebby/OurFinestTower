@@ -8,23 +8,22 @@ public class Unit : MonoBehaviour {
 
     public float MoveSpeed = 6f;
     public float MaxHealth = 20f;    
+    public float YOffset = 0;
+    public int Rarity = 100;
+    public Transform ProjectileTarget;
     public Image HealthBar;
 
     public float Health { get; set; }
-    //private Vector3 initialSize;
 
     // Use this for initialization
     void Start () {
         Health = MaxHealth;
-        //initialSize = transform.localScale;
-        //transform.localScale *= MaxHealth / 200.0f;
+        transform.position += new Vector3(0, 1, 0) * YOffset;
     }
 
     public void Reset()
     {
         Health = MaxHealth;
-        //transform.localScale = initialSize;
-        //transform.localScale *= MaxHealth / 100.0f;
         HealthBar.fillAmount = 1;
     }
 
