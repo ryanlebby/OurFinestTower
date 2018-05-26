@@ -141,7 +141,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1941200417568770}
-  m_LocalRotation: {x: 0.26888612, y: -0.35625684, z: -0.7503998, w: 0.4875258}
+  m_LocalRotation: {x: 0.2660747, y: 0.75556004, z: -0.32523558, w: -0.50254875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.50000024, z: 0.50000024}
   m_Children: []
@@ -179,7 +179,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9010e6a7f483f8849b61ea235f925d00, type: 2}
+  - {fileID: 2100000, guid: b62f9ab9a1a9aea478327d2ce9def9d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackPower: 0
-  Velocity: 10
+  Velocity: 20
   Range: 0
   Core: {fileID: 1941200417568770}
   SpawnGrowthSpeed: 0.075
@@ -345,7 +345,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1159719131
+  randomSeed: -69796076
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1247,7 +1247,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.08240342, b: 0.9191176, a: 0}
+        key0: {r: 0, g: 0.08240342, b: 0.9191176, a: 0.81960785}
         key1: {r: 1, g: 0, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1264,7 +1264,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 193
-        atime1: 32382
+        atime1: 41441
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -3706,7 +3706,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1644515809
+  randomSeed: -1508450005
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4266,7 +4266,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
