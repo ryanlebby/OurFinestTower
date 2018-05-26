@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour {
     public Unit TargetedUnit { get; set; }
     public Transform Origin { get; set; }
 
+    protected float tempVelocity;
+
     public void Start()
     {
         TargetedUnit = null;
@@ -35,7 +37,6 @@ public class Projectile : MonoBehaviour {
 
     public void MoveTowardTarget()
     {
-
         transform.position = Vector3.MoveTowards(
                     transform.position,
                     TargetedUnit.ProjectileContactPoint.position,
@@ -43,7 +44,17 @@ public class Projectile : MonoBehaviour {
                 );
     }
 
-    public void Fire(Unit target, Transform origin)
+    public void MoveTowardTargetSlowToFast(float velocityMultiplier)
+    {
+        tempVelocity *= velocityMultiplier;
+        transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    TargetedUnit.ProjectileContactPoint.position,
+                    tempVelocity * Time.deltaTime
+                );
+    }
+
+    public virtual void Fire(Unit target, Transform origin)
     {
         TargetedUnit = target;
         Origin = origin;

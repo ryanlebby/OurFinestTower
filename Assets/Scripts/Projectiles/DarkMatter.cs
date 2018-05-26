@@ -6,6 +6,7 @@ using UnityEngine;
 public class DarkMatter : Projectile
 {
     public GameObject Core;
+    public float VelocityMultiplier = 1.05f;
     public float SpawnGrowthSpeed = 0.075f;    
     public float DetonateTimer = 2.0f;
     public float DetonateGrowthSpeed = 0.075f;
@@ -90,7 +91,7 @@ public class DarkMatter : Projectile
             // keep moving towards the target
             else if (transform.position != TargetedUnit.transform.position)
             {
-                MoveTowardTarget();
+                MoveTowardTargetSlowToFast(VelocityMultiplier);
             }
         }       
     }
@@ -101,6 +102,12 @@ public class DarkMatter : Projectile
         IsDetonating = false;
         transform.localScale = initialSize;
         Spawn();
+    }
+
+    public override void Fire(Unit target, Transform origin)
+    {
+        tempVelocity = Velocity / 10f;
+        base.Fire(target, origin);
     }
 
     void OnTriggerEnter(Collider other)
