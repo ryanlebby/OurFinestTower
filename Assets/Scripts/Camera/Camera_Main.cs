@@ -22,13 +22,7 @@ public class Camera_Main : MonoBehaviour {
     }
 
     void Update()
-    {
-        
-
-        
-
-        
-
+    {   
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;

@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Rotate_Y : MonoBehaviour {
 
+    public bool X, Y, Z;
+
     public bool clockwise = true;
     public float speed = 30f;
 	
 	// Update is called once per frame
+    
 	void Update () {
+
         int direction = clockwise ? 1 : -1;
-        transform.Rotate(0, 0, direction * speed * Time.deltaTime);
+        transform.Rotate(
+            X ? direction * speed * Time.deltaTime : 0,
+            Y ? direction * speed * Time.deltaTime : 0, 
+            Z ? direction * speed * Time.deltaTime : 0
+        );
     }
 }
