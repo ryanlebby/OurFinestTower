@@ -9,6 +9,7 @@ TagManager:
   - Unit
   - Decoration
   - Terrain
+  - Tile
   layers:
   - Default
   - TransparentFX
