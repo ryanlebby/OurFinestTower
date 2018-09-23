@@ -38,7 +38,7 @@ public class HexGrid : MonoBehaviour {
         otherFolder = transform.Find("Other");
 
         InitializeGrid();
-        DrawGrid();
+        DrawGrid();        
 	}
 
     void Update()
@@ -80,6 +80,7 @@ public class HexGrid : MonoBehaviour {
     }
     private void InitializeGrid()
     {
+        OrganizeMapObjects();
         slots = new List<HexSlot>();
         SetOffsets();
 
@@ -189,7 +190,7 @@ public class HexGrid : MonoBehaviour {
             var vert_SE = slot.Position + new Vector3(xOffset, 0, -zOffset) + transform.position;
             var vert_SW = slot.Position + new Vector3(-xOffset, 0, -zOffset) + transform.position;
 
-            Gizmos.color = new Color(200, 0, 200, 128);//Color.magenta;
+            Gizmos.color = new Color(200, 0, 200, 128);
             Gizmos.DrawLine(vert_E, vert_NE);
             Gizmos.DrawLine(vert_NE, vert_NW);
             Gizmos.DrawLine(vert_NW, vert_W);
@@ -226,6 +227,26 @@ public class HexGrid : MonoBehaviour {
             default:
                 child.parent = otherFolder;
                 break;
+        }
+    }
+    public void OrganizeMapObjects()
+    {
+        var tiles = GameObject.FindGameObjectsWithTag("Tile");
+        foreach (var tile in tiles)
+        {
+            tile.transform.parent = tileFolder;
+        }
+
+        var decorations = GameObject.FindGameObjectsWithTag("Decoration");
+        foreach (var decoration in decorations)
+        {
+            decoration.transform.parent = decorationFolder;
+        }
+
+        var towers = GameObject.FindGameObjectsWithTag("Tower");
+        foreach (var tower in towers)
+        {
+            tower.transform.parent = towerFolder;
         }
     }
 }

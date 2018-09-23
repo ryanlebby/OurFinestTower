@@ -19,7 +19,7 @@ public class SnapToHexGrid : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (this.transform.position != previousPosition)
+        if (this.transform.position.x != previousPosition.x || this.transform.position.z != previousPosition.z)
         {
             this.transform.position = new Vector3(this.transform.position.x, grid.transform.position.y + yOffset, this.transform.position.z);
 

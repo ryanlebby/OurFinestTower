@@ -19,6 +19,11 @@ namespace Assets.Scriptable_Objects
             {
                 grid.ResetGrid();
             }
+
+            if (GUILayout.Button("Organize Map Objects"))
+            {
+                grid.OrganizeMapObjects();
+            }
         }
     }
 }
