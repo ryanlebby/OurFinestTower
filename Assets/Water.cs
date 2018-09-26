@@ -39,4 +39,5 @@ public class Water : MonoBehaviour {
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, waveSpeed * Time.deltaTime);
     }
+
 }

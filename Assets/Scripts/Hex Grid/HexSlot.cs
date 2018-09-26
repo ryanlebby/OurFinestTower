@@ -6,6 +6,9 @@ public class HexSlot
 {
     public Vector3 Position { get; set; }
     public List<GameObject> Contents { get; set; }
+    public List<string> ContentTypes { get; set; }
+
+    // Neighbors
     public HexSlot N { get; set; }
     public HexSlot NE { get; set; }
     public HexSlot NW { get; set; }

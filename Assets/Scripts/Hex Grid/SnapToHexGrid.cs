@@ -6,7 +6,9 @@ using UnityEngine;
 public class SnapToHexGrid : MonoBehaviour {
 
     public HexGrid grid;
-    public float yOffset;
+
+    [HideInInspector]
+    public HexSlot hexSlot;
 
     private Vector3 previousPosition;
 
@@ -21,11 +23,10 @@ public class SnapToHexGrid : MonoBehaviour {
     {
         if (this.transform.position.x != previousPosition.x || this.transform.position.z != previousPosition.z)
         {
-            this.transform.position = new Vector3(this.transform.position.x, grid.transform.position.y + yOffset, this.transform.position.z);
-
             var nearestHexSlot = grid.NearestHexSlot(this.transform.position);
-            this.transform.position = nearestHexSlot.Position + Vector3.up * yOffset;
+            this.transform.position = new Vector3(nearestHexSlot.Position.x, transform.position.y, nearestHexSlot.Position.z);
             nearestHexSlot.Contents.Add(this.gameObject);
+            hexSlot = nearestHexSlot;
 
             previousPosition = this.transform.position;
         }

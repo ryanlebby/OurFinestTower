@@ -208,7 +208,7 @@ public class HexGrid : MonoBehaviour {
     public HexSlot NearestHexSlot(Vector3 testPoint)
     {
         return slots
-            .OrderBy(s => Vector3.Distance(testPoint, s.Position + transform.position))
+            .OrderBy(s => Vector3.Distance(new Vector3(testPoint.x, transform.position.y, testPoint.z), s.Position + transform.position))
             .FirstOrDefault();
     }
     public void AddChild(Transform child)
