@@ -4,40 +4,83 @@ using UnityEngine;
 
 public class Water : MonoBehaviour {
 
-    public float waveSize;
+    public float waveHeight;
     public float waveSpeed;
+    //public float waveRotation;
+
     private float yOffset;
-    private float min;
-    private float max;
-    private Vector3 targetPosition;
-    private bool waveDirectionUp;
+
+    private float minHeight;
+    private float maxHeight;
+    private bool waveHeightUp;
+    private Vector3 targetHeight;
+
+    private float minRotX;
+    private float maxRotX;
+    private float targetRotationX;
+    private bool waveRotationXUp;
+
+    private float minRotZ;
+    private float maxRotZ;    
+    private float targetRotationZ; 
+    private bool waveRotationZUp;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         yOffset = transform.position.y;
-        min = yOffset - waveSize;
-        max = yOffset + waveSize;
-        targetPosition = new Vector3(transform.position.x, Random.Range(min, max), transform.position.z);
-        waveDirectionUp = (targetPosition.y > transform.position.y);
+
+        minHeight = yOffset - waveHeight;
+        maxHeight = yOffset + waveHeight;
+        targetHeight = new Vector3(transform.position.x, Random.Range(minHeight, maxHeight), transform.position.z);
+        waveHeightUp = (targetHeight.y > transform.position.y);
+
+        //minRotX = transform.rotation.x - waveRotation;
+        //maxRotX = transform.rotation.x - waveRotation;
+        //targetRotationX = Random.Range(minRotX, maxRotX);
+        //waveRotationXUp = (targetRotationX > transform.rotation.x);        
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        UpAndDown();
+        //Rotation();
+    }
 
-        if (waveDirectionUp && transform.position.y >= targetPosition.y)
+    void UpAndDown()
+    {
+        if (waveHeightUp && transform.position.y >= targetHeight.y)
         {
-            waveDirectionUp = !waveDirectionUp;
-            targetPosition = new Vector3(transform.position.x, Random.Range(min, transform.position.y), transform.position.z);
+            waveHeightUp = !waveHeightUp;
+            targetHeight = new Vector3(transform.position.x, Random.Range(minHeight, transform.position.y), transform.position.z);
         }
 
-        if (!waveDirectionUp && transform.position.y <= targetPosition.y)
+        if (!waveHeightUp && transform.position.y <= targetHeight.y)
         {
-            waveDirectionUp = !waveDirectionUp;
-            targetPosition = new Vector3(transform.position.x, Random.Range(transform.position.y, max), transform.position.z);
+            waveHeightUp = !waveHeightUp;
+            targetHeight = new Vector3(transform.position.x, Random.Range(transform.position.y, maxHeight), transform.position.z);
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, waveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetHeight, waveSpeed * Time.deltaTime);
+    }
+
+    void Rotation()
+    {
+        
+        if (waveRotationXUp && transform.rotation.x <= maxRotX)
+        {
+            waveRotationXUp = !waveRotationXUp;
+            targetRotationX = Random.Range(minRotX, targetRotationX);
+        }
+
+        if (!waveRotationXUp && transform.rotation.x >= minRotX)
+        {
+            waveRotationXUp = !waveRotationXUp;
+            targetRotationX = Random.Range(targetRotationX, maxRotX);
+        }
+
+        transform.Rotate(Vector3.right, (transform.rotation.x - targetRotationX) * Time.deltaTime);
     }
 
 }
