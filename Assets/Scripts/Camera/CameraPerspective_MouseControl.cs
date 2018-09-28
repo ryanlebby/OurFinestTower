@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera_Main : MonoBehaviour {
+public class CameraPerspective_MouseControl : MonoBehaviour {
 
     public float scrollSpeed = 1f;
     public float rayDistance = 250f;
