@@ -76,7 +76,7 @@ public class UnitSpawner : MonoBehaviour {
         }
 
         GameManager.Instance.ActiveUnits.Add(unitGO.GetComponent<Unit>());
-        Debug.Log(System.DateTime.Now.ToString() + "  Spawned " + unitGO.GetComponent<Unit>().Name);
+        //Debug.Log(System.DateTime.Now.ToString() + "  Spawned " + unitGO.GetComponent<Unit>().Name);
     }
 
     private string RandomUnitName()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class UnitPath : MonoBehaviour {
 
     public Transform[] Waypoints;
+    public PlayerBase PlayerBase;
 
     public int Length { get { return Waypoints.Length; } }
 
