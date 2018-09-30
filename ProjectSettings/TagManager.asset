@@ -10,6 +10,8 @@ TagManager:
   - Decoration
   - Terrain
   - Tile
+  - Fire
+  - Pathing
   layers:
   - Default
   - TransparentFX

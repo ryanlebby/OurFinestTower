@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pathing : MonoBehaviour {
-    
+
+    [HideInInspector]
+    public UnitPath Path;
+
     private int curIndex = 0;
     private Vector3 target;
     private bool noTarget = true;
     private Unit unit;
     private Vector3 SpawnLocation;
-    private UnitPath Path;
+    
 
     void Start()
     {
-        Path = GameManager.Instance.GetUnitPath();
+        //Path = GameManager.Instance.GetUnitPath();
 
         unit = GetComponent<Unit>();
-        SpawnLocation = PositionClampY(Path.At(0));       
+        SpawnLocation = PositionClampY(Path.At(0).transform);       
     }
 
     // Update is called once per frame
@@ -79,6 +82,7 @@ public class Pathing : MonoBehaviour {
         target = Vector3.zero;
         noTarget = true;
         transform.position = PositionClampY(Path.At(0));
+        transform.LookAt(Path.At(0));
     }
 
     private Vector3 PositionClampY(Transform transform)

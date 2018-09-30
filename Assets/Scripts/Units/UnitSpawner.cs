@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +8,8 @@ public class UnitSpawner : MonoBehaviour {
 
     public float MinSpawnTimer = 0.5f;
     public float MaxSpawnTimer = 2.5f;
-    public List<GameObject> UnitPrefabs = new List<GameObject>();    
+    public List<GameObject> UnitPrefabs = new List<GameObject>();
+    public UnitPath Path;
 
     private UnitPool UnitPool = new UnitPool();
     private float SpawnTimer;
@@ -42,8 +44,9 @@ public class UnitSpawner : MonoBehaviour {
             if (unitGO != null)
             {
                 unitGO.GetComponent<Unit>().Reset();
-                unitGO.GetComponent<Pathing>().Reset();                
-                unitGO.SetActive(true);
+                unitGO.GetComponent<Pathing>().Reset();
+                unitGO.transform.LookAt(Path.At(0));
+                unitGO.SetActive(true);                
             }
 
             else
@@ -53,6 +56,8 @@ public class UnitSpawner : MonoBehaviour {
                     .SingleOrDefault();
 
                 unitGO = Instantiate(prefab, transform.position, Quaternion.identity);
+                unitGO.GetComponent<Pathing>().Path = Path;
+                unitGO.transform.LookAt(Path.At(0));
                 unitGO.transform.parent = this.transform;
                 UnitPool.Add(unitGO);
             }
@@ -65,10 +70,13 @@ public class UnitSpawner : MonoBehaviour {
                     .SingleOrDefault();
 
             unitGO = Instantiate(prefab, transform.position, Quaternion.identity);
+            unitGO.GetComponent<Pathing>().Path = Path;
+            unitGO.transform.LookAt(Path.At(0));
             unitGO.transform.parent = this.transform;
         }
 
         GameManager.Instance.ActiveUnits.Add(unitGO.GetComponent<Unit>());
+        Debug.Log(System.DateTime.Now.ToString() + "  Spawned " + unitGO.GetComponent<Unit>().Name);
     }
 
     private string RandomUnitName()

@@ -29,6 +29,7 @@ public class HexGrid : MonoBehaviour {
     private Transform decorationFolder;
     private Transform towerFolder;
     private Transform otherFolder;
+    private Transform pathingFolder;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +37,7 @@ public class HexGrid : MonoBehaviour {
         decorationFolder = transform.Find("Decorations");
         towerFolder = transform.Find("Towers");
         otherFolder = transform.Find("Other");
+        pathingFolder = transform.Find("Pathing");
 
         InitializeGrid();
         DrawGrid();        
@@ -247,6 +249,12 @@ public class HexGrid : MonoBehaviour {
         foreach (var tower in towers)
         {
             tower.transform.parent = towerFolder;
+        }
+
+        var pathingObjects = GameObject.FindGameObjectsWithTag("Pathing");
+        foreach (var pathingObject in pathingObjects)
+        {
+            pathingObject.transform.parent = pathingFolder;
         }
     }
 }

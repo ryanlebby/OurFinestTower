@@ -23,7 +23,10 @@ public class SnapToHexGrid : MonoBehaviour {
     {
         if (this.transform.position.x != previousPosition.x || this.transform.position.z != previousPosition.z)
         {
-            var nearestHexSlot = grid.NearestHexSlot(this.transform.position);
+            if (grid == null)
+                Debug.Log("No HexGrid set: " + transform.name);
+
+            var nearestHexSlot = grid.NearestHexSlot(this.transform.position);            
             this.transform.position = new Vector3(nearestHexSlot.Position.x, transform.position.y, nearestHexSlot.Position.z);
             nearestHexSlot.Contents.Add(this.gameObject);
             hexSlot = nearestHexSlot;

@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour {
 
     public UnitPath GetUnitPath()
     {
+        if (Paths.Count == 0)
+            return null;
+
         return Paths[Random.Range(0, Paths.Count)];
     }
 }

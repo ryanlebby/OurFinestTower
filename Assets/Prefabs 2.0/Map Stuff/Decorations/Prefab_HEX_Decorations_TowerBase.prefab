@@ -137,8 +137,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666927260374380}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -6.749999, y: 0, z: 11.691342}
-  m_LocalScale: {x: 0.49000406, y: 1, z: 0.49000406}
+  m_LocalPosition: {x: -11.249999, y: 0, z: 6.4951906}
+  m_LocalScale: {x: 0.49002883, y: 1, z: 0.49002883}
   m_Children:
   - {fileID: 4062084376179810}
   - {fileID: 4543801702858110}
@@ -487,5 +487,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPointTransform: {fileID: 4041423467036536}
-  Platform: {fileID: 0}
+  Platform: {fileID: 4062084376179810}
   HasTower: 0

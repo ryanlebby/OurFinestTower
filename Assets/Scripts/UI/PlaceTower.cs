@@ -56,5 +56,7 @@ public class PlaceTower : MonoBehaviour {
         towerPrefab = GameManager.Instance.Prefabs_Towers
             .Where(t => t.GetComponentInChildren<Tower>().name == towerName)
             .SingleOrDefault();
+
+        Debug.Log("Placement Mode: " + towerName + ((towerPrefab == null) ? "  ERROR" : "  SUCCESS"));
     }
 }

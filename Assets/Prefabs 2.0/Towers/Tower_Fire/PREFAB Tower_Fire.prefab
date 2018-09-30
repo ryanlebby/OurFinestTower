@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 64607780336823612}
   - component: {fileID: 114404106552338870}
   - component: {fileID: 114680152377463158}
+  - component: {fileID: 135095463393669658}
   m_Layer: 0
   m_Name: PREFAB Tower_Fire
   m_TagString: Tower
@@ -467,7 +468,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579251580682284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2499998, y: 1.5, z: -1.2990375}
+  m_LocalPosition: {x: 4.4999995, y: 2.5, z: 5.1961527}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4342028868007398}
@@ -658,7 +659,7 @@ MeshCollider:
   m_GameObject: {fileID: 1579251580682284}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -778,6 +779,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+--- !u!135 &135095463393669658
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579251580682284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198001842806751492
 ParticleSystem:
   m_ObjectHideFlags: 1
