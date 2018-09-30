@@ -12,6 +12,7 @@ TagManager:
   - Tile
   - Fire
   - Pathing
+  - PlayerBase
   layers:
   - Default
   - TransparentFX

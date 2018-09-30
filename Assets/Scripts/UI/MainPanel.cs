@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class MainPanel : MonoBehaviour {
 
     public Text baseHPDisplay;
+    public Slider baseHPSlider;
     public static MainPanel Instance;
 
 	// Use this for initialization
 	void Start () {
         Instance = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void SetBaseHPDisplay(int current, int max)
+    {
+        baseHPDisplay.text = current.ToString() + " / " + max.ToString();
+        baseHPSlider.value = ((float)current / (float)max); 
+    }
 }

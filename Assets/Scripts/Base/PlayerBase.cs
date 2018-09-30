@@ -11,8 +11,8 @@ public class PlayerBase : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentHealth = maxHealth;
-        UpdateHPDisplay();
-	}
+        MainPanel.Instance.SetBaseHPDisplay(currentHealth, maxHealth);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,24 +20,29 @@ public class PlayerBase : MonoBehaviour {
 	}
 
     public void TakeDamage(int damage)
-    {
-        Debug.Log(string.Format("Castle takes {0} damage. {1} / {2}", damage.ToString(), currentHealth.ToString(), maxHealth.ToString()));
+    {        
         currentHealth -= damage;
+        Debug.Log(string.Format("Castle takes {0} damage. {1} / {2}", damage.ToString(), currentHealth.ToString(), maxHealth.ToString()));
+
         if (currentHealth <= 0)
             KillBase();
 
-        UpdateHPDisplay();
+        MainPanel.Instance.SetBaseHPDisplay(currentHealth, maxHealth);
     }
 
     public void KillBase()
     {
         Debug.Log("Base Died!");
         currentHealth = maxHealth;
+        MainPanel.Instance.SetBaseHPDisplay(currentHealth, maxHealth);
     }
 
-    public void UpdateHPDisplay()
+    private void OnTriggerEnter(Collider other)
     {
-        var mp = MainPanel.Instance;
-        MainPanel.Instance.baseHPDisplay.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+        if (other.tag == "Unit")
+        {
+            TakeDamage(1);
+            other.GetComponent<Unit>().Deactivate();
+        }
     }
 }

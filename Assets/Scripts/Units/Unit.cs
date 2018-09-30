@@ -38,10 +38,14 @@ public class Unit : MonoBehaviour {
 
         if (Health <= 0)
         {
-            var u = this.GetComponent<Unit>();
-            GameManager.Instance.ActiveUnits.Remove(u);
-            this.gameObject.SetActive(false);
+            Deactivate();
         }            
+    }
+
+    public void Deactivate()
+    {
+        GameManager.Instance.ActiveUnits.Remove(this);
+        this.gameObject.SetActive(false);
     }
 
     public void SetActive(bool active)

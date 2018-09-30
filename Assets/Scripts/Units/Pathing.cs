@@ -38,13 +38,6 @@ public class Pathing : MonoBehaviour {
             Walk();
         }
 
-        // If unit has reached the end or is dead
-        else if (this.gameObject.activeSelf)
-        {
-            GameManager.Instance.ActiveUnits.Remove(unit);
-            Path.PlayerBase.TakeDamage(1);
-            this.gameObject.SetActive(false);
-        }
     }    
 
     void Walk()
